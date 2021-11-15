@@ -17,7 +17,7 @@
 	<header>
 		<nav class="yellow darken-2">
 		  <div class="nav-wrapper">
-			<a href="index.html" class="brand-logo"><img src="./../img/boxLogo50.png"></a>
+			<a href="indexCliente.html" class="brand-logo"><img src="./../img/boxLogo50.png"></a>
 			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
 			<ul class="right hide-on-med-and-down">
 				<li>[Nombre de cliente]</li>
@@ -59,14 +59,9 @@
 							</select>
 							<label>Estado</label>
 						</div>
-						<div class="input-field col s12">
-							<select>
-								<option value="" disabled selected>Selecciona</option>
-								<option value="1">Municipio 1</option>
-								<option value="2">Municipio 2</option>
-								<option value="3">Municipio 3</option>
-							</select>
-							<label>Municipio/Alcaldía</label>
+						<div class="col s12 input-field">
+							<label for="ciudadOrigen">Municipio/Alcaldía</label>
+							<input type="text" id="ciudadOrigen" name="ciudadOrigen" data-validetta="required">
 						</div>
 						<div class="input-field col s12">
 							<select>
@@ -89,14 +84,9 @@
 							</select>
 							<label>Estado</label>
 						</div>
-						<div class="input-field col s12">
-							<select>
-								<option value="" disabled selected>Selecciona</option>
-								<option value="1">Municipio 1</option>
-								<option value="2">Municipio 2</option>
-								<option value="3">Municipio 3</option>
-							</select>
-							<label>Municipio/Alcaldía</label>
+						<div class="col s12 input-field">
+							<label for="ciudadDestino">Municipio/Alcaldía</label>
+							<input type="text" id="ciudadDestino" name="ciudadDestino" data-validetta="required">
 						</div>
 						<div class="col s12 input-field">
 							<label for="calle">Calle y número</label>
