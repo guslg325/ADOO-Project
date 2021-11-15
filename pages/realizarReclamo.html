@@ -69,16 +69,17 @@
                                         <input type="text" id="direccionRemitente" name="direccionRemitente" data-validetta="required">
                                     </div> 
                                     <div class="col s6 input-field">
-                                            <label for="ciudadRemitente">Ciudad</label>
-                                            <input type="text" id="ciudadRemitente" name="ciudadRemitente" data-validetta="required">
-                                    </div>  
+                                        <label for="ciudadRemitente">Municipio/Alcaldía</label>
+                                        <input type="text" id="ciudadRemitente" name="ciudadRemitente" data-validetta="required">
+                                    </div>   
                                     <div class="col s6 input-field">
-                                            <label for="paisRemitente">Pais</label>
-                                            <input type="text" id="paisRemitente" name="paisRemitente" data-validetta="required">
-                                    </div>
-                                    <div class="col s6 input-field">
-                                        <label for="estadoRemitente">Estado/Provincia</label>
-                                        <input type="text" id="estadoRemitente" name="estadoRemitente" data-validetta="required">
+                                        <select>
+                                            <option value="" disabled selected>Selecciona</option>
+                                            <option value="1">Ciudad de México</option>
+                                            <option value="2">Estado de México</option>
+                                            <option value="3">Morelos</option>
+                                        </select>
+                                        <label>Estado</label>
                                     </div>  
                                     <div class="col s6 input-field">
                                             <label for="cpRemitente">Codigo Postal</label>
@@ -92,7 +93,7 @@
                                         <label for="tel2Remitente">Telefono 2</label>
                                         <input type="text" id="tel2Remitente" name="tel2Remitente" data-validetta="required">
                                     </div> 
-                                    <div class="col s12 input-field">
+                                    <div class="col s6 input-field">
                                         <label for="correoRemitente">Correo electronico</label>
                                         <input type="email" id="correoRemitente" name="correoRemitente" data-validetta="required,email,minLength[8]">
                                     </div>                          
@@ -115,16 +116,17 @@
                                         <input type="text" id="direccionDestinatario" name="direccionDestinatario" data-validetta="required">
                                     </div> 
                                     <div class="col s6 input-field">
-                                            <label for="ciudadDestinatario">Ciudad</label>
+                                            <label for="ciudadDestinatario">Municipio/Alcaldía</label>
                                             <input type="text" id="ciudadDestinatario" name="ciudadDestinatario" data-validetta="required">
                                     </div>  
                                     <div class="col s6 input-field">
-                                            <label for="paisDestinatario">Pais</label>
-                                            <input type="text" id="paisDestinatario" name="paisDestinatario" data-validetta="required">
-                                    </div>
-                                    <div class="col s6 input-field">
-                                        <label for="estadoDestinatario">Estado/Provincia</label>
-                                        <input type="text" id="estadoDestinatario" name="estadoDestinatario" data-validetta="required">
+                                        <select>
+                                            <option value="" disabled selected>Selecciona</option>
+                                            <option value="1">Ciudad de México</option>
+                                            <option value="2">Estado de México</option>
+                                            <option value="3">Morelos</option>
+                                        </select>
+                                        <label>Estado</label>
                                     </div>  
                                     <div class="col s6 input-field">
                                             <label for="cpDestinatario">Codigo Postal</label>
@@ -138,7 +140,7 @@
                                         <label for="tel2Destinatario">Telefono 2</label>
                                         <input type="text" id="tel2Destinatario" name="tel2Destinatario" data-validetta="required">
                                     </div> 
-                                    <div class="col s12 input-field">
+                                    <div class="col s6 input-field">
                                         <label for="correoDestinatario">Correo electronico</label>
                                         <input type="email" id="correoDestinatario" name="correoDestinatario" data-validetta="required,email,minLength[8]">
                                     </div>       
@@ -291,13 +293,15 @@
                                             <label for="ciudadReclamante">Ciudad</label>
                                             <input type="text" id="ciudadReclamante" name="ciudadReclamante" data-validetta="required">
                                     </div>  
+                                    
                                     <div class="col s6 input-field">
-                                            <label for="paisReclamante">Pais</label>
-                                            <input type="text" id="paisReclamante" name="paisReclamante" data-validetta="required">
-                                    </div>
-                                    <div class="col s6 input-field">
-                                        <label for="estadoReclamante">Estado/Provincia</label>
-                                        <input type="text" id="estadoReclamante" name="estadoReclamante" data-validetta="required">
+                                        <select>
+								<option value="" disabled selected>Selecciona</option>
+								<option value="1">Ciudad de México</option>
+								<option value="2">Estado de México</option>
+								<option value="3">Morelos</option>
+							</select>
+							<label>Estado</label>
                                     </div>  
                                     <div class="col s6 input-field">
                                             <label for="cpReclamante">Codigo Postal</label>
