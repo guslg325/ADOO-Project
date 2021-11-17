@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Gestionar centros | Paquetería</title>
+<meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'/>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+<link href="./../materialize/css/materialize.min.css" rel="stylesheet">
+<link href="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css" rel="stylesheet">
+<link href="./../css/general.css" rel="stylesheet">
+<script src="./../js/jquery-3.6.0.min.js"></script>
+<script src="./../materialize/js/materialize.min.js"></script>
+<script src="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js"></script>
+<script src="./../js/index.js"></script>
+<script src="./../js/gestionarCentros.js"></script>
+</head>
+<body style="background-color: lightgray;">
+	<header>
+		<nav class="yellow darken-2">
+			<div class="nav-wrapper">
+				<a href="indexAdmin.html" class="brand-logo"><img src="./../img/boxLogo50.png"></a>
+				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href='./../index.html'>Cerrar sesión</a></li>
+				</ul>
+			</div>
+		</nav> <!-- /menu -->
+		<ul class="sidenav" id="mobile-demo">
+			<li>Administrador</li>
+			<li><a href='./../index.html'>Cerrar sesión</a></li>
+			<li><a href="./indexAdmin.html"> Pagina inicial </a></li>
+		</ul> <!-- /menu celular-->
+	</header>
+	<main>
+		<div class="container">
+			<div class="card horizontal">
+				<div class="card-stacked">
+					<div class="card-content">
+						<a href="./indexAdmin.html"><i class="fas fa-arrow-left"></i> Regresar</a>
+						<div class="row">
+							<h4>Gestionar centros de envío</h4>
+						</div>
+						<div class="row">
+							<div class="col s12 m6 l9">
+								<h5>Centros de envío registrados</h5>
+							</div>
+							<div class="col s12 m6 l3 input-field">
+								<a href="./crearCentro.html">
+									<button type="button" class="btn yellow darken-2">Crear centro</button>
+								</a>
+							</div>
+							<div class="row">
+								<div class="col s12">
+									<table class="striped">
+										<thead>
+											<tr>
+												<th>ID de centro</th>
+												<th>Ubicación de centro</th>
+												<th>Opciones de centro</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>C0</td>
+												<td>Tlalpan, Ciudad de México</td>
+												<td class="input-field">
+													<button type="button" class="btn yellow darken-2 verCentro"><i class="fas fa-eye"></i></button>
+													<a href="./modificarCentro.html"><button type="button" class="btn yellow darken-2"><i class="fas fa-pencil-alt"></i></button></a>
+													<button type="button" class="btn yellow darken-2 eliminarCentro"><i class="fas fa-trash"></i></button>
+												</td>
+											</tr>
+											<tr>
+												<td>C1</td>
+												<td>Atizapán, Estado de México</td>
+												<td>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-eye"></i></button>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-pencil-alt"></i></button>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-trash"></i></button>
+												</td>
+											</tr>
+											<tr>
+												<td>C2</td>
+												<td>Cuernavaca, Morelos</td>
+												<td>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-eye"></i></button>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-pencil-alt"></i></button>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-trash"></i></button>
+												</td>
+											</tr>
+											<tr>
+												<td>C3</td>
+												<td>Ecatepec, Estado de México</td>
+												<td>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-eye"></i></button>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-pencil-alt"></i></button>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-trash"></i></button>
+												</td>
+											</tr>
+											<tr>
+												<td>C4</td>
+												<td>Benito Juárez, Ciudad de México</td>
+												<td>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-eye"></i></button>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-pencil-alt"></i></button>
+													<button type="button" class="btn yellow darken-2"><i class="fas fa-trash"></i></button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer class="page-footer yellow darken-2">
+		<div class="footer-copyright yellow darken-2">
+			© 2021 Copyright
+			<a class="grey-text text-lighten-4 right" href="indexAdmin.html">TeamSquid</a>	
+		</div>
+	</footer>
+</body>
+</html>

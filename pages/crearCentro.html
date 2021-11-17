@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Crear repartidor | Paquetería</title>
+<title>Crear centro | Paquetería</title>
 <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'/>
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -12,10 +12,10 @@
 <link href="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css" rel="stylesheet">
 <link href="./../css/general.css" rel="stylesheet">
 <script src="./../js/jquery-3.6.0.min.js"></script>
-<script src="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js"></script>
 <script src="./../materialize/js/materialize.min.js"></script>
+<script src="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js"></script>
 <script src="./../js/index.js"></script>
-<script src="./../js/crearRepartidor.js"></script>
+<script src="./../js/crearCentro.js"></script>
 </head>
 <body style="background-color: lightgray;">
 	<header>
@@ -39,53 +39,62 @@
 			<div class="card horizontal">
 				<div class="card-stacked">
 					<div class="card-content">
-						<a href="./gestionarRutas.html"><i class="fas fa-arrow-left"></i> Regresar</a>
+						<a href="./gestionarCentros.html"><i class="fas fa-arrow-left"></i> Regresar</a>
 						<div class="row">
-							<h4>Crear cuenta de repartidor</h4>
+							<h4>Crear un centro de envío</h4>
 						</div>
 						<div class="row">
 							<div class="col s12 m6 l4">
-								<h6><i class="fas fa-mail-bulk"></i> Correo electrónico:</h6>
+								<h6><i class="fas fa-map"></i> Estado:</h6>
 							</div>
 							<div class="col s12 m6 l8 input-field">
-								<label for="correo">Correo electrónico</label>
-								<input type="text" id="correo" name="correo">
+								<select>
+									<option value="" disabled selected>Selecciona</option>
+									<option value="1">Ciudad de México</option>
+									<option value="2">Estado de México</option>
+									<option value="3">Morelos</option>
+								</select>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col s12 m6 l4">
-								<h6><i class="fas fa-key"></i> Contraseña:</h6>
+								<h6><i class="fas fa-location-arrow"></i> Municipio/Alcaldía:</h6>
 							</div>
 							<div class="col s12 m6 l8 input-field">
-								<label for="contrasena">Contraseña</label>
-								<input type="password" id="contrasena" name="contrasena">
+								<label for="municipio">Municipio/Alcaldía</label>
+								<input type="text" id="municipio" name="municipio" data-validetta="required">
 							</div>
 						</div>
 						<div class="row">
-							<div class="col s12 m3">
-								<h6><i class="fas fa-user-circle"></i> Nombre:</h6>
+							<div class="col s12 m6 l4">
+								<h6><i class="fas fa-car"></i> Calle y número:</h6>
 							</div>
-							<div class="col s12 m3 input-field">
-								<label for="nombre">Nombre</label>
-								<input type="text" id="nombre" name="nombre">
+							<div class="col s12 m6 l8 input-field">
+								<label for="calle">Calle y número</label>
+								<input type="text" id="calle" name="calle" data-validetta="required">
 							</div>
-							<div class="col s12 m3 input-field">
-								<label for="apellido1">Apellido paterno</label>
-								<input type="text" id="apellido1" name="apellido1">
+						</div>
+						<div class="row">
+							<div class="col s12 m6 l4">
+								<h6><i class="fas fa-user"></i> Asignar encargado:</h6>
 							</div>
-							<div class="col s12 m3 input-field">
-								<label for="apellido2">Apellido materno</label>
-								<input type="text" id="apellido2" name="apellido2">
+							<div class="col s12 m6 l8 input-field">
+								<select>
+									<option value="" disabled selected>Selecciona</option>
+									<option value="1">Enrique García López</option>
+									<option value="2">Alfredo Gómez Sánchez</option>
+									<option value="3">Ulises Márquez Villareal</option>
+								</select>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col s12 l3"></div>
 							<div class="col s12 m4 l3"></div>
 							<div class="col s12 m4 l3 input-field">
-								<a href="./gestionarRepartidores.html"><button type="button" class="btn red" style="width:100%;">Cancelar</button></a>
+								<a href="./gestionarCentros.html"><button type="button" class="btn red" style="width:100%;">Cancelar</button></a>
 							</div>
 							<div class="col s12 m4 l3 input-field">
-								<button type="button" class="btn yellow darken-3 crearRepartidor" style="width:100%;">Agregar</button>
+								<button type="button" class="btn yellow darken-3 crearCentro" style="width:100%;">Crear</button>
 							</div>
 						</div>
 					</div>
@@ -96,7 +105,7 @@
 	<footer class="page-footer yellow darken-2">
 		<div class="footer-copyright yellow darken-2">
 			© 2021 Copyright
-			<a class="grey-text text-lighten-4 right" href="indexCliente.html">TeamSquid</a>	
+			<a class="grey-text text-lighten-4 right" href="indexAdmin.html">TeamSquid</a>	
 		</div>
 	</footer>
 </body>
