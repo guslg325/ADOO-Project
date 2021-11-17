@@ -10,6 +10,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <link href="./../materialize/css/materialize.min.css" rel="stylesheet">
 <link href="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css" rel="stylesheet">
+<link href="./../css/general.css" rel="stylesheet">
 <script src="./../js/jquery-3.6.0.min.js"></script>
 <script src="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js"></script>
 <script src="./../materialize/js/materialize.min.js"></script>
@@ -51,18 +52,16 @@
 				  	<div class="card-content">
 						<h4><i class="fas fa-key"></i> Ingresar nueva contraseña</h4>
 						<form id="nuevaContrasena" autocomplete="off">
-							<div class="row">
-								<div class="col s12 m6 input-field">
-									<label for="contrasena">Nueva contraseña</label>
-									<input type="password" id="contrasena" name="contrasena" data-validetta="required,minLength[8]">
-								</div>
-								<div class="col s12 m6 input-field">
-									<label for="confirmaContrasena">Confirmar nueva contraseña</label>
-									<input type="password" id="confirmaContrasena" name="confirmaContrasena" data-validetta="required,minLength[8]">
-								</div>
-								<div class="input-field">
-									<button type="button" class="btn yellow darken-3 actualizarContrasena">Actualizar contraseña</button>
-								</div>
+							<div class="input-field">
+								<label for="contrasena">Nueva contraseña</label>
+								<input type="password" id="contrasena" name="contrasena" data-validetta="required,minLength[8]">
+							</div>
+							<div class="input-field">
+								<label for="confirmaContrasena">Confirmar nueva contraseña</label>
+								<input type="password" id="confirmaContrasena" name="confirmaContrasena" data-validetta="required,minLength[8]">
+							</div>
+							<div class="input-field">
+								<button type="button" class="btn yellow darken-3 actualizarContrasena">Actualizar contraseña</button>
 							</div>
 						</form>
 					</div>
