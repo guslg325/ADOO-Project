@@ -44,7 +44,7 @@
 				  	<div class="card-content">
 						<center><h3><i class="fas fa-key"></i> Iniciar sesión</h3></center>
 						<div class="row">
-							<form id="formLogin" autocomplete="off">
+							<form id="formLogin" autocomplete="off" method="post" action="login.php">
 								<div class="col s12 input-field">
 									<label for="correo">Correo electrónico</label>
 									<input type="email" id="correo" name="correo" data-validetta="required,email,minLength[8]">
@@ -58,11 +58,11 @@
 								</div>
 								<div class="col s12 input-field">
 									<label for="captcha">Captcha</label>
-									<input type="text" id="contrasena" name="contrasena" data-validetta="required">
+									<input type="text" id="captcha" name="captcha" data-validetta="required">
 								</div>
 								<div class="col s12 m12 input-field">
                                     <div class="col s12 m6">
-                                        <button type="button" class="btn green darken-2 center-align login" style="width:100%;">Ingresar</button>
+                                        <button type="submit" class="btn green darken-2 center-align" style="width:100%;">Ingresar</button>
                                     </div>
                                     <div class="col s12 m6">
                                         <a href="./../index.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
