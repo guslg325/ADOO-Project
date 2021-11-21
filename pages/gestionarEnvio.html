@@ -44,61 +44,69 @@
 
 	<main>
         <div class="container">
-            <div class="row">
-				<h3>Gestión de Envios</h3>
-			</div>
-            <div class="row">
-                <div class="col s12 m12">
-                    <table class="responsive-table">
-                        <thead>
-                            <tr>
-                                <th>Numero de envío</th>
-                                <th>Folio</th>
-                                <th>Fecha del envío</th>
-                                <th>Total</th>
-                                <th>Acción</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>A52BNVMXHD</td>
-                                <td>25/11/2021</td>
-                                <td>$250</td>
-                                <td>
-                                    <a href="consultarEnvio.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-                                    	<button type="button" class="btn yellow darken-2 center-align" style="width:25%;">Consultar envío</button>
-									</a>
-                                    <a href="modificarDatosEnvio.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-                                        <button type="button" class="btn yellow darken-2 center-align" style="width:33%;">Modificar datos del envio</button>
-                                    </a>
-									<a href="realizarReclamo.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-                                        <button type="button" class="btn yellow darken-2 center-align" style="width:25%;">Realizar reclamo</button>
-                                    </a>
-                                    <button type="button" class="btn yellow darken-2 center-align" style="width:15%;">Facturar</button>
-                                </td>
-                            <tr>
-                                <td>2</td>
-                                <td>B84HUA930G</td>
-                                <td>17/12/2021</td>
-                                <td>$100</td>
-                                <td>
-                                    <a href="consultarEnvio.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-                                    	<button type="button" class="btn yellow darken-2 center-align" style="width:25%;">Consultar envío</button>
-									</a>
-                                    <a href="modificarDatosEnvio.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-                                        <button type="button" class="btn yellow darken-2 center-align" style="width:33%;">Modificar datos del envio</button>
-                                    </a>
-									<a href="realizarReclamo.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-                                        <button type="button" class="btn yellow darken-2 center-align" style="width:25%;">Realizar reclamo</button>
-                                    </a>
-                                    <button type="button" class="btn yellow darken-2 center-align" style="width:15%;">Facturar</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+			<div class="card">
+                <div class="card-stacked">
+					<div class="card-content">
+						<a href="indexCliente.html"><i class="fas fa-arrow-left"></i> Regresar</a>
+						<div class="row">
+							<h3>Gestión de Envios</h3>
+						</div>
+						<div class="row">
+							<div class="col s12 m12">
+								<table class="responsive-table">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Numero de rastreo</th>
+											<th>Fecha del envío</th>
+											<th>Total</th>
+											<th>Estatus</th>
+											<th>Acción</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>1</td>
+											<td>9082320026</td>
+											<td>25/11/2021</td>
+											<td>$250</td>
+											<td>En espera de recoleccion</td>
+											<td>
+												<a href="consultarEnvio.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
+													<button type="button" class="btn yellow darken-2 center-align" style="width:25%;">Consultar envío</button>
+												</a>
+												<a href="modificarDatosEnvio.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
+													<button type="button" class="btn yellow darken-2 center-align" style="width:33%;">Modificar datos del envio</button>
+												</a>
+												<button type="button" class="btn yellow darken-2 center-align disabled" style="width:25%;">Realizar reclamo</button>
+												<button type="button" class="btn yellow darken-2 center-align" style="width:15%;">Facturar</button>
+											</td>
+										<tr>
+											<td>2</td>
+											<td>8374027491</td>
+											<td>17/12/2021</td>
+											<td>$100</td>
+											<td>Entregado</td>
+											<td>
+												<a href="consultarEnvio.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
+													<button type="button" class="btn yellow darken-2 center-align" style="width:25%;">Consultar envío</button>
+												</a>
+												<a href="modificarDatosEnvio.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
+													<button type="button" class="btn yellow darken-2 center-align" style="width:33%;">Modificar datos del envio</button>
+												</a>
+												<a href="realizarReclamo.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
+													<button type="button" class="btn yellow darken-2 center-align" style="width:25%;">Realizar reclamo</button>
+												</a>
+												<button type="button" class="btn yellow darken-2 center-align" style="width:15%;">Facturar</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>	
+				</div>
+			</div>	
         </div>
         
 	</main>	

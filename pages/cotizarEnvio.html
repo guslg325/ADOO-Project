@@ -42,99 +42,104 @@
 	</header>
 	<main>
 		<div class="container">
-			<div class="row">
-				<h3>Cotizar envío</h3>
+			<div class="card">
+                <div class="card-stacked">
+                    <div class="card-content">
+						<div class="row">
+							<h3>Cotizar envío</h3>
+						</div>
+						<form id="formCotizar" autocomplete="off">
+							<div class="row">
+								<div class="col s12 l4">
+									<h6><i class="fas fa-map"></i> Datos de origen *</h6>
+									<div class="input-field col s12">
+										<select>
+											<option value="" disabled selected>Selecciona</option>
+											<option value="1">Ciudad de México</option>
+											<option value="2">Estado de México</option>
+											<option value="3">Morelos</option>
+										</select>
+										<label>Estado</label>
+									</div>
+									<div class="col s12 input-field">
+										<label for="ciudadOrigen">Municipio/Alcaldía</label>
+										<input type="text" id="ciudadOrigen" name="ciudadOrigen" class="validate" required>
+									</div>
+									<div class="input-field col s12">
+										<select>
+											<option value="" disabled selected>Selecciona</option>
+											<option value="1">C1</option>
+											<option value="2">C2</option>
+											<option value="3">C3</option>
+										</select>
+										<label>Centro de distribución</label>
+									</div>
+								</div>
+								<div class="col s12 l4">
+									<h6><i class="fas fa-location-arrow"></i> Datos de destino *</h6>
+									<div class="input-field col s12">
+										<select>
+											<option value="" disabled selected >Selecciona</option>
+											<option value="1">Ciudad de México</option>
+											<option value="2">Estado de México</option>
+											<option value="3">Morelos</option>
+										</select>
+										<label>Estado</label>
+									</div>
+									<div class="col s12 input-field">
+										<label for="ciudadDestino">Municipio/Alcaldía</label>
+										<input type="text" id="ciudadDestino" name="ciudadDestino" class="validate" required>
+									</div>
+									<div class="col s12 input-field">
+										<label for="cp">Código postal</label>
+										<input type="text" id="cp" name="cp" class="validate" required>
+									</div>
+									<div class="col s12 input-field">
+										<label for="calle">Calle y número</label>
+										<input type="text" id="calle" name="calle" class="validate" required>
+									</div>
+								</div>
+								<div class="col s12 l4">
+									<h6><i class="fas fa-box"></i> Datos del paquete *</h6>
+									<div class="col s12 input-field">
+										<label for="longitud">Longitud</label>
+										<input type="number" id="longitud" name="longitud" class="validate" required>
+									</div>
+									<div class="col s12 input-field">
+										<label for="ancho">Ancho</label>
+										<input type="number" id="ancho" name="ancho" class="validate" required>
+									</div>
+									<div class="col s12 input-field">
+										<label for="altura">Altura</label>
+										<input type="number" id="altura" name="altura" class="validate" required>
+									</div>
+									<div class="col s12 input-field">
+										<label for="peso">Peso</label>
+										<input type="number" id="peso" name="peso" class="validate" required>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12 m4 input-field">
+									<a href="./indexCliente.html">
+										<button type="button" class="btn green darken-2 center-align" style="width:100%;">Cotizar</button>
+									</a>
+								</div>
+								<div class="col s12 m4 input-field">
+									<a href="./indexCliente.html">
+										<button type="reset" class="btn yellow darken-2 center-align" style="width:100%;">Limpiar</button>
+									</a>
+								</div>
+								<div class="col s12 m4 input-field">
+									<a href="./indexCliente.html">
+										<button type="button" class="btn red darken-2 center-align" style="width:100%;">Cancelar</button>
+									</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
-			<form id="formCotizar" autocomplete="off">
-				<div class="row">
-					<div class="col s12 l4">
-						<h6><i class="fas fa-map"></i> Datos de origen</h6>
-						<div class="input-field col s12">
-							<select>
-								<option value="" disabled selected>Selecciona</option>
-								<option value="1">Ciudad de México</option>
-								<option value="2">Estado de México</option>
-								<option value="3">Morelos</option>
-							</select>
-							<label>Estado</label>
-						</div>
-						<div class="col s12 input-field">
-							<label for="ciudadOrigen">Municipio/Alcaldía</label>
-							<input type="text" id="ciudadOrigen" name="ciudadOrigen" data-validetta="required">
-						</div>
-						<div class="input-field col s12">
-							<select>
-								<option value="" disabled selected>Selecciona</option>
-								<option value="1">C1</option>
-								<option value="2">C2</option>
-								<option value="3">C3</option>
-							</select>
-							<label>Centro de distribución</label>
-						</div>
-					</div>
-					<div class="col s12 l4">
-						<h6><i class="fas fa-location-arrow"></i> Datos de destino</h6>
-						<div class="input-field col s12">
-							<select>
-								<option value="" disabled selected>Selecciona</option>
-								<option value="1">Ciudad de México</option>
-								<option value="2">Estado de México</option>
-								<option value="3">Morelos</option>
-							</select>
-							<label>Estado</label>
-						</div>
-						<div class="col s12 input-field">
-							<label for="ciudadDestino">Municipio/Alcaldía</label>
-							<input type="text" id="ciudadDestino" name="ciudadDestino" data-validetta="required">
-						</div>
-						<div class="col s12 input-field">
-							<label for="calle">Código postal</label>
-							<input type="text" id="calle" name="calle" data-validetta="required">
-						</div>
-						<div class="col s12 input-field">
-							<label for="calle">Calle y número</label>
-							<input type="text" id="calle" name="calle" data-validetta="required">
-						</div>
-					</div>
-					<div class="col s12 l4">
-						<h6><i class="fas fa-box"></i> Datos del paquete</h6>
-						<div class="col s12 input-field">
-							<label for="longitud">Longitud</label>
-							<input type="number" id="longitud" name="longitud" data-validetta="required">
-						</div>
-						<div class="col s12 input-field">
-							<label for="ancho">Ancho</label>
-							<input type="number" id="ancho" name="ancho" data-validetta="required">
-						</div>
-						<div class="col s12 input-field">
-							<label for="altura">Altura</label>
-							<input type="number" id="altura" name="altura" data-validetta="required">
-						</div>
-						<div class="col s12 input-field">
-							<label for="peso">Peso</label>
-							<input type="number" id="peso" name="peso" data-validetta="required">
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col s12 l3"></div>
-					<div class="col s12 l3 input-field">
-						<a href="./indexCliente.html">
-							<button type="button" class="btn red darken-2 center-align" style="width:100%;">Cancelar</button>
-						</a>
-					</div>
-					<div class="col s12 l3 input-field">
-						<a href="./indexCliente.html">
-							<button type="reset" class="btn yellow darken-2 center-align" style="width:100%;">Limpiar</button>
-						</a>
-					</div>
-					<div class="col s12 l3 input-field">
-						<a href="./indexCliente.html">
-							<button type="button" class="btn green darken-2 center-align" style="width:100%;">Cotizar</button>
-						</a>
-					</div>
-				</div>
-			</form>
 		</div>
 	</main>
 	<footer class="page-footer yellow darken-2">
