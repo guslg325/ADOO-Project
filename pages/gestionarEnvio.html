@@ -9,10 +9,13 @@
 <meta name="keywords" content="">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <link href="./../materialize/css/materialize.min.css" rel="stylesheet">
+<link href="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css" rel="stylesheet">
 <link href="./../css/general.css" rel="stylesheet">
 <script src="./../js/jquery-3.6.0.min.js"></script>
+<script src="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js"></script>
 <script src="./../materialize/js/materialize.min.js"></script>
 <script src="./../js/index.js"></script>
+<script src="./../js/gestionarEnvio.js"></script>
 </head>
 
 <body>
@@ -79,7 +82,12 @@
 													<button type="button" class="btn yellow darken-2 center-align" style="width:25%;">Modificar datos</button>
 												</a>
 												<button type="button" class="btn yellow darken-2 center-align disabled" style="width:30%;">Realizar reclamo</button>
-												<button type="button" class="btn yellow darken-2 center-align" style="width:16%;">Facturar</button>
+												<a href="facturar.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
+													<button type="button" class="btn yellow darken-2 center-align" style="width:16%;">Facturar</button>
+												</a>
+												<br>
+												<br>
+												<button type="button" class="gestionarEnvio btn yellow darken-2 center-align" style="width:30%;">Consultar Factura</button>
 											</td>
 										<tr>
 											<td>2</td>
@@ -97,7 +105,12 @@
 												<a href="realizarReclamo.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
 													<button type="button" class="btn yellow darken-2 center-align" style="width:30%;">Realizar reclamo</button>
 												</a>
-												<button type="button" class="btn yellow darken-2 center-align" style="width:16%;">Facturar</button>
+												<a href="facturar.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
+													<button type="button" class="btn yellow darken-2 center-align" style="width:16%;">Facturar</button>
+												</a>
+												<br>
+												<br>
+												<button type="button" class="btn yellow darken-2 center-align gestionarEnvio" style="width:30%;">Consultar Factura</button>
 											</td>
 										</tr>
 									</tbody>
