@@ -1,5 +1,6 @@
 <?php
 $conec = mysqli_connect("localhost","root","","login");//("localhost","USUARIO","CONTRASENA","AQUI ES EL NOMBRE DE LA BASE")
+mysqli_set_charset($conec,"utf8");//Permite el uso de acentos en las vocales
 if(!$conec)
 {
 	die("Error en la base".mysqli_connect_error());
