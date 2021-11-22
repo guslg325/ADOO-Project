@@ -1,3 +1,27 @@
+<?php
+session_start();
+$sesion = isset($_SESSION["login"]);
+
+$conec = mysqli_connect("localhost","root","","login");
+mysqli_set_charset($conec,"utf8");
+
+if($sesion == 1){
+	//Hay sesion de usuario
+	$correo = $_SESSION["login"];
+	$query = "SELECT * FROM login WHERE correo = '$correo'";
+	$respuesta = mysqli_query($conec,$query);
+	$usuario = mysqli_fetch_row($respuesta);
+
+	$nombre = $usuario[1];
+}else{
+	//No hay sesión de usuario
+	header("location: ./login.html");
+}
+?>
+
+<!--***************
+	Inicia HTML
+****************-->
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,26 +42,42 @@
 	<header>
 		<nav class="yellow darken-2">
 			<div class="nav-wrapper">
-				<a href="./../index.php" class="brand-logo"><img src="./../img/boxLogo50.png"></a>
-				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="./ingresarNuevaContrasena.html"><i class="fas fa-user-circle"></i> [Nombre de cliente]</li></a>
-					<li><a href="realizarEnvio.html">Realizar envío</a></li>
-					<li><a href="gestionarEnvio.html">Gestionar envío</a></li>
-					<li><a href="cotizarEnvio.html">Cotizar un envío</a></li>
-					<li><a href='rastrear.html'>Rastrear paquete</a></li>
-					<li><a href='./../index.php'>Cerrar sesión</a></li>
-				</ul>
+			<a href="./../index.php" class="brand-logo"><img src="./../img/boxLogo50.png"></a>
+			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
+			<ul class="right hide-on-med-and-down">
+				<?php
+					if($sesion){
+						//Hay sesion de usuario, muestra menú personalizado
+						$opciones = "<li><a href='./ingresarNuevaContrasena.php'><i class='fas fa-user-circle'></i> $nombre</li></a>
+						<li><a href='./realizarEnvio.php'>Realizar envío</a></li>
+						<li><a href='./gestionarEnvio.php'>Gestionar envío</a></li>
+						<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>";
+						echo $opciones;
+					}else{
+						//No hay sesion de usuario
+					}
+				?>
+				<li><a href='./rastrear.php'>Rastrear paquete</a></li>
+					<li><a href='<?php if($sesion) echo "./logout.php"; else echo "./login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
+			</ul>
 			</div>
 		</nav> <!-- /menu -->
 		<ul class="sidenav" id="mobile-demo">
-			<li><a href="./ingresarNuevaContrasena.html"><i class="fas fa-user-circle"></i> [Nombre de cliente]</li></a>
-			<li><a href="realizarEnvio.html">Realizar envío</a></li>
-			<li><a href="gestionarEnvio.html">Gestionar envío</a></li>
-			<li><a href="cotizarEnvio.html">Cotizar un envío</a></li>
-			<li><a href='./pages/rastrear.html'>Rastrear paquete</a></li>
+			<?php
+				if($sesion){
+					//Hay sesion de usuario, muestra menú personalizado
+					$opciones = "<li><a href='./ingresarNuevaContrasena.php'><i class='fas fa-user-circle'></i> $nombre</li></a>
+					<li><a href='./realizarEnvio.php'>Realizar envío</a></li>
+					<li><a href='./gestionarEnvio.php'>Gestionar envío</a></li>
+					<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>";
+					echo $opciones;
+				}else{
+					//No hay sesion de usuario
+				}
+			?>
+			<li><a href='<?php if($sesion) echo "./logout.php"; else echo "./login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
+			<li><a href='./rastrear.php'>Rastrear paquete</a></li>
 			<li><a href="./../index.php"> Pagina inicial </a></li>
-			<li><a href='./../index.php'>Cerrar sesión</a></li>
 		</ul> <!-- /menu celular-->
 	</header>
 	<main>
@@ -121,17 +161,15 @@
 							</div>
 							<div class="row">
 								<div class="col s12 m4 input-field">
-									<a href="./index.php">
+									<a href="./../index.php">
 										<button type="button" class="btn green darken-2 center-align" style="width:100%;">Cotizar</button>
 									</a>
 								</div>
 								<div class="col s12 m4 input-field">
-									<a href="./index.php">
-										<button type="reset" class="btn yellow darken-2 center-align" style="width:100%;">Limpiar</button>
-									</a>
+									<button type="reset" class="btn yellow darken-2 center-align" style="width:100%;">Limpiar</button>
 								</div>
 								<div class="col s12 m4 input-field">
-									<a href="./index.php">
+									<a href="./../index.php">
 										<button type="button" class="btn red darken-2 center-align" style="width:100%;">Cancelar</button>
 									</a>
 								</div>

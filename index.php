@@ -43,23 +43,23 @@ if($sesion == 1){
 	<header>
 			<nav class="yellow darken-2">
 			  <div class="nav-wrapper">
-				<a href="index.html" class="brand-logo"><img src="./img/boxLogo50.png"></a>
+				<a href="index.php" class="brand-logo"><img src="./img/boxLogo50.png"></a>
 				<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
 				<ul class="right hide-on-med-and-down">
 					<?php
 						if($sesion){
 							//Hay sesion de usuario, muestra menú personalizado
-							$opciones = "<li><a href='./pages/ingresarNuevaContrasena.html'><i class='fas fa-user-circle'></i> $nombre</li></a>
-							<li><a href='./pages/realizarEnvio.html'>Realizar envío</a></li>
-							<li><a href='./pages/gestionarEnvio.html'>Gestionar envío</a></li>
-							<li><a href='./pages/cotizarEnvio.html'>Cotizar un envío</a></li>";
+							$opciones = "<li><a href='./pages/ingresarNuevaContrasena.php'><i class='fas fa-user-circle'></i> $nombre</li></a>
+							<li><a href='./pages/realizarEnvio.php'>Realizar envío</a></li>
+							<li><a href='./pages/gestionarEnvio.php'>Gestionar envío</a></li>
+							<li><a href='./pages/cotizarEnvio.php'>Cotizar un envío</a></li>";
 							echo $opciones;
 						}else{
 							//No hay sesion de usuario
 						}
 					?>
-				  	<?php if(!$sesion) echo "<li><a href='./pages/registrar.html'>Crear cuenta</a></li>";?>
-				  	<li><a href='./pages/rastrear.html'>Rastrear paquete</a></li>
+				  	<?php if(!$sesion) echo "<li><a href='./pages/registrar.php'>Crear cuenta</a></li>";?>
+				  	<li><a href='./pages/rastrear.php'>Rastrear paquete</a></li>
 					  <li><a href='<?php if($sesion) echo "./pages/logout.php"; else echo "./pages/login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
 				</ul>
 			  </div>
@@ -68,10 +68,10 @@ if($sesion == 1){
 				<?php
 					if($sesion){
 						//Hay sesion de usuario, muestra menú personalizado
-						$opciones = "<li><a href='./pages/ingresarNuevaContrasena.html'><i class='fas fa-user-circle'></i> $nombre</li></a>
-						<li><a href='./pages/realizarEnvio.html'>Realizar envío</a></li>
-						<li><a href='./pages/gestionarEnvio.html'>Gestionar envío</a></li>
-						<li><a href='./pages/cotizarEnvio.html'>Cotizar un envío</a></li>";
+						$opciones = "<li><a href='./pages/ingresarNuevaContrasena.php'><i class='fas fa-user-circle'></i> $nombre</li></a>
+						<li><a href='./pages/realizarEnvio.php'>Realizar envío</a></li>
+						<li><a href='./pages/gestionarEnvio.php'>Gestionar envío</a></li>
+						<li><a href='./pages/cotizarEnvio.php'>Cotizar un envío</a></li>";
 						echo $opciones;
 					}else{
 						//No hay sesion de usuario
@@ -79,7 +79,7 @@ if($sesion == 1){
 				?>
 				<li><a href='<?php if($sesion) echo "./pages/logout.php"; else echo "./pages/login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
 				<?php if(!$sesion) echo "<li><a href='./pages/registrar.html'>Crear cuenta</a></li>";?>
-				<li><a href='./pages/rastrear.html'>Rastrear paquete</a></li>
+				<li><a href='./pages/rastrear.php'>Rastrear paquete</a></li>
 				<li><a href="index.php"> Pagina inicial </a></li>
 			</ul> <!-- /menu celular-->
 	</header>
