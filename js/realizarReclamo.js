@@ -7,7 +7,7 @@ $(document).ready(function(){
 			useBootstrap: false,
 			boxWidth: "50%",
 			buttons: {
-				Continuar: function(){window.location.href="gestionarEnvio.html";}
+				Continuar: function(){window.location.href="./gestionarEnvio.php";}
 			}
 		});
 	});
