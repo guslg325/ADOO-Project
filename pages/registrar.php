@@ -26,7 +26,7 @@ if(!$query){
 	}
 else
 {
-	header("Location: registrar.html");
+	header("Location: login.html");
 	//echo "Error".$nombre;
 }
 ?>

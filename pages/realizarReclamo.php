@@ -27,7 +27,7 @@ if($sesion == 1){
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Reclamaciones | Paquetería</title>
+<title>Generar factura</title>
 <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'/>
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -167,7 +167,7 @@ if($sesion == 1){
                                         <button type="button" class="btn green darken-2 center-align realizarReclamo" style="width:100%;">Enviar reclamación</button>
                                     </div>
                                     <div class="col s12 m6">
-                                        <a href="gestionarEnvio.html"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
+                                        <a href="gestionarEnvio.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
                                             <button type="button" class="btn red darken-2 center-align" style="width:100%;">Cancelar</button>
                                         </a>     
                                     </div>                                    
