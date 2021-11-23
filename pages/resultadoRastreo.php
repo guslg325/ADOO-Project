@@ -100,6 +100,12 @@ if($sesion == 1){
                         <div class="col s12 m12">
                             <h5>Destino: ---</h5>
                         </div> 
+						<div class="col s12 m12">
+                            <h5>Fecha aproximada de llegada: ##/##/####</h5>
+                        </div> 
+						<div class="col s12 m12">
+                            <h5>Estatus:</h5>
+                        </div> 
                     </div>
 
                     <div class="row">
@@ -111,7 +117,7 @@ if($sesion == 1){
                                 <thead>
                                     <tr>
                                         <th># de movimiento</th>
-                                        <th>Estatus</th>
+                                        <th>Estatus del movimiento</th>
                                         <th>Ubicación</th>
                                         <th>Fecha</th>
                                         <th>Hora</th>
