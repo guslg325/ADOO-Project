@@ -137,11 +137,11 @@ if($sesion == 1){
                                     </div>
                                     <div class="col s12 input-field">                                
                                         <textarea name="embalajeExterior" id="embalajeExterior" class="materialize-textarea validate" required></textarea>
-                                        <label for="embalajeExterior">Describa el embalaje exterior</label>
+                                        <label for="embalajeExterior">Describa el daño del embalaje exterior</label>
                                     </div>
                                     <div class="col s12 input-field">
                                         <textarea name="embalajeInterior" id="embalajeInterior" class="materialize-textarea validate" required></textarea>
-                                        <label for="embalajeInterior">Describa el embalaje interior</label>
+                                        <label for="embalajeInterior">Describa el daño del embalaje interior</label>
                                     </div>                                   
                                     <div class="col s12 input-field">
                                         <textarea name="danioPaquete" id="danioPaquete" class="materialize-textarea validate" required></textarea>
