@@ -108,6 +108,10 @@ if($sesion == 1){
 						<div class="card-content">
 							<p>Tenemos más de 15 000 centros de distribución en todo el país.</p>
 							<p>A donde sea que necesites enviar un paquete, ¡Seguro tenemos cobertura!</p>
+							<br><br>
+							<a href="./pages/listadoCentros.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
+								<button type="button" class="btn yellow darken-2 center-align" style="width:70%;">Consulta nuestros centros de distribución</button>
+							</a>
 						</div>
 					</div>
 					</div>
