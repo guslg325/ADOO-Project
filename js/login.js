@@ -3,6 +3,14 @@ $(document).ready(function(){
         bubblePosition:"bottom",//Posicion del mensaje de error
         bubbleGapTop: 10,//opciones del mensaje de error
         bubbleGapLeft: -5,
+        validators:{
+            regExp:{
+                captcha:{
+                    pattern: /CAPTCHA/,
+                    errorMessage: 'CAPTCHA no verificado.'
+                }
+            }
+        },
         onValid:function(e){//Todos los datos cumplen con la validacion
             e.preventDefault();//Evita el envio del formulario con 'action' (funciona para usar ajax)
             $.ajax({

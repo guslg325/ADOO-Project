@@ -30,14 +30,14 @@
 			<ul class="right hide-on-med-and-down">
 			  	<li><a href='login.html'>Iniciar sesión</a></li>
 			  	<li><a href='registrar.html'>Crear cuenta</a></li>
-			  	<li><a href='rastrear.html'>Rastrear paquete</a></li>
+			  	<li><a href='rastrear.php'>Rastrear paquete</a></li>
 			</ul>
 		  </div>
 		</nav> <!-- /menu -->
 		<ul class="sidenav" id="mobile-demo">
 			<li><a href='login.html'>Iniciar sesión</a></li>
 			<li><a href='registrar.html'>Crear cuenta</a></li>
-			<li><a href='rastrear.html'>Rastrear paquete</a></li>
+			<li><a href='rastrear.php'>Rastrear paquete</a></li>
 			<li><a href="./../index.php"> Pagina inicial </a></li>
 		</ul> <!-- /menu celular-->
 	</header>
@@ -48,10 +48,10 @@
 				  	<div class="card-content">
 						<center><h3><i class="fas fa-user-circle"></i> Crear cuenta</h3></center>
 						<div class="row">
-							<form id="formRegistro" autocomplete="off" method="post" action="registrar.php">
+							<form id="formRegistro" autocomplete="off" method="post">
 								<div class="col s12 input-field">
 									<label for="correo">Correo electrónico</label>
-									<input class="validate" type="email" id="correo" name="correo" data-validetta="required,email" required>
+									<input class="validate" type="email" id="correo" name="correo" data-validetta="required,email,minLength[8]" required>
 								</div>
 								<div class="col s12 input-field">
 									<label for="usuario">Nombre</label>
@@ -59,7 +59,7 @@
 								</div>
 								<div class="col s12 input-field">
 									<label for="contrasena">Contraseña</label>
-									<input class="validate" type="password" id="contrasena" name="contrasena" data-validetta="required,minLength[8]" required>
+									<input class="validate" type="password" id="contrasena" name="contrasena" data-validetta="required,minLength[8],regExp[passRegEx]" required>
 								</div>
 								<div class="col s12 m12 input-field">
                                     <div class="col s12 m6">

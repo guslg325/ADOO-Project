@@ -2,17 +2,30 @@
 session_start();
 $sesion = isset($_SESSION["login"]);
 
-$conec = mysqli_connect("localhost","root","","login");
+$conec = mysqli_connect("localhost","root","","squid");
 mysqli_set_charset($conec,"utf8");
 
 if($sesion == 1){
-	//Hay sesion de usuario
 	$correo = $_SESSION["login"];
-	$query = "SELECT * FROM login WHERE correo = '$correo'";
+	$query = "SELECT * FROM cliente WHERE correo_cliente = '$correo'";
 	$respuesta = mysqli_query($conec,$query);
 	$usuario = mysqli_fetch_row($respuesta);
 
-	$nombre = $usuario[1];
+	$tipoUsuario = $usuario[1];
+	switch($tipoUsuario){
+		case 0://Index de cliente
+			$nombre = $usuario[4];
+		break;
+		case 1://Redirigir al panel del admin
+			echo "<script> window.location.href = './pages/indexAdmin.html'; </script>";
+		break;
+		case 2://Redirigir al panel del repartidor
+
+		break;
+		case 3://Redirigir al panel del encargado de centro
+
+		break;
+	}
 }else{
 	//No hay sesión de usuario
 	header("location: ./login.html");
@@ -52,7 +65,7 @@ if($sesion == 1){
 				<?php
 					if($sesion){
 						//Hay sesion de usuario, muestra menú personalizado
-						$opciones = "<li><a href='./ingresarNuevaContrasena.php'><i class='fas fa-user-circle'></i> $nombre</li></a>
+						$opciones = "<li><i class='fas fa-user-circle'></i> $nombre</li>
 						<li><a href='./realizarEnvio.php'>Realizar envío</a></li>
 						<li><a href='./gestionarEnvio.php'>Gestionar envío</a></li>
 						<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>";
@@ -70,7 +83,7 @@ if($sesion == 1){
 			<?php
 				if($sesion){
 					//Hay sesion de usuario, muestra menú personalizado
-					$opciones = "<li><a href='./ingresarNuevaContrasena.php'><i class='fas fa-user-circle'></i> $nombre</li></a>
+					$opciones = "<li><i class='fas fa-user-circle'></i> $nombre</li>
 					<li><a href='./realizarEnvio.php'>Realizar envío</a></li>
 					<li><a href='./gestionarEnvio.php'>Gestionar envío</a></li>
 					<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>";
