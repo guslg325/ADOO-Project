@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$('.actualizarContrasena').click(function(){
+	$(".actualizarContrasena").click(function(){
 		$.alert({
 			title:'<h5><i class="fas fa-info"></i> Aviso</h5>',
 			content:'Operación exitosa',
@@ -7,7 +7,7 @@ $(document).ready(function(){
 			useBootstrap: false,
 			boxWidth: "50%",
 			buttons: {
-				Continuar: function(){window.location.href="indexCliente.html";}
+				Continuar: function(){window.location.href="./login.html";}
 			}
 		});
 	});
