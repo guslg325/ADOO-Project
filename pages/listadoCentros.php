@@ -74,8 +74,9 @@ if($sesion == 1){
 						//No hay sesion de usuario
 					}
 				?>
+				<li><a href='<?php if($sesion) echo "./logout.php"; else echo "./login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
 				<li><a href='./rastrear.php'>Rastrear paquete</a></li>
-					<li><a href='<?php if($sesion) echo "./logout.php"; else echo "./login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
+					
 			</ul>
 			</div>
 		</nav> <!-- /menu -->
