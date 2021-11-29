@@ -44,7 +44,7 @@
 				  	<div class="card-content">
 						<h4><i class="fas fa-key"></i> Ingresar nueva contraseña</h4>
 						<div class="row">
-							<form id="nuevaContrasena" autocomplete="off">
+							<form id="nuevaContrasena" autocomplete="off" method="post" action="ingresarNuevaContrasena.php">
 								<div class="input-field">
 									<label for="contrasena">Nueva contraseña</label>
 									<input type="password" id="contrasena" name="contrasena" data-validetta="required,minLength[8]">
@@ -55,7 +55,7 @@
 								</div>
 								<div class="col s12 m12 input-field">
                                     <div class="col s12 m6">
-                                        <button type="button" class="btn green darken-2 center-align actualizarContrasena" style="width:100%;">Actualizar contraseña</button>
+                                        <button type="submit" class="btn green darken-2 center-align actualizarContrasena" style="width:100%;">Actualizar contraseña</button>
                                     </div>
                                     <div class="col s12 m6">
                                         <a href="./../index.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
