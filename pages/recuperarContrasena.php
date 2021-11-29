@@ -40,7 +40,7 @@ if($vali==1)//SI DETECTA UNA COLUMNA, ES QUE SI EXISTE EL USUARIO CON LA CONTRAS
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Paqueteria SQUID. Recuperar Contraseña.';
-        $mail->Body    = 'Usted ha solicitado el restablecimiento de su contraseña./br
+        $mail->Body    = 'Usted ha solicitado el restablecimiento de su contraseña.<br>
         por favor ingrese al siguiente link <a href=localhost/adoo5/pages/ingresarNuevaContrasena.html>RECUPERAR CONTRASENA.</a>';
     
         $mail->send();
