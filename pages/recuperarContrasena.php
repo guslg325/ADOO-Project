@@ -12,6 +12,7 @@ require 'PHPMailer/PHPMailer.php';
 $mail = new PHPMailer(true);
 
 $conec = mysqli_connect("localhost","root","","squid");//("localhost","USUARIO","CONTRASENA","AQUI ES EL NOMBRE DE LA BASE")
+mysqli_set_charset($conec,"utf8");
 if(!$conec)
 {
 	die("Error en la base".mysqli_connect_error());
@@ -52,8 +53,6 @@ if($vali==1)//SI DETECTA UNA COLUMNA, ES QUE SI EXISTE EL USUARIO CON LA CONTRAS
 	    $respAX["msj"] = "Error al enviar correo: {$mail->ErrorInfo}";//Mensaje que se desplegara en el alert
     }
 	$_SESSION["reestablecer"] = $correo;//Crea una sesion con un campo 'login' que contendra el valor del correo
-    echo '';
-    header('Location: mailEnviado.html');
     $respAX["codigo"] = 1; //Codigo de estado que se devuevle para determinar el estado del login 1=exito, 0=error
 	$respAX["msj"] = "Correo de recuperación enviado. No olvide revisar SPAM.";//Mensaje que se desplegara en el alert
 }
