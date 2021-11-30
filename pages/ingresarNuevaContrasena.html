@@ -11,9 +11,12 @@
 <link href="./../materialize/css/materialize.min.css" rel="stylesheet">
 <link href="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css" rel="stylesheet">
 <link href="./../css/general.css" rel="stylesheet">
+<link href="./../css/validetta.min.css">
 <script src="./../js/jquery-3.6.0.min.js"></script>
 <script src="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js"></script>
 <script src="./../materialize/js/materialize.min.js"></script>
+<script src="./../js/validetta.min.js"></script>
+<script src="./../js/validettaLang-es-ES.js"></script>
 <script src="./../js/index.js"></script>
 <script src="./../js/ingresarNuevaContrasena.js"></script>
 </head>
@@ -44,16 +47,19 @@
 				  	<div class="card-content">
 						<h4><i class="fas fa-key"></i> Ingresar nueva contraseña</h4>
 						<div class="row">
-							<form id="nuevaContrasena" autocomplete="off" method="post" action="ingresarNuevaContrasena.php">
-								<div class="input-field">
-									<label for="contrasena">Nueva contraseña</label>
-									<input type="password" id="contrasena" name="contrasena" data-validetta="required,minLength[8]">
+							<form id="nuevaContrasena" autocomplete="off">
+								<div class="col s12">
+									<p>La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial.</p>
 								</div>
-								<div class="input-field">
+								<div class="col s12 input-field">
+									<label for="contrasena">Nueva contraseña</label>
+									<input type="password" id="contrasena" name="contrasena" data-validetta="required,minLength[8],regExp[passRegEx]">
+								</div>
+								<div class="col s12 input-field">
 									<label for="confirmaContrasena">Confirmar nueva contraseña</label>
 									<input type="password" id="confirmaContrasena" name="confirmaContrasena" data-validetta="required,minLength[8]">
 								</div>
-								<div class="col s12 m12 input-field">
+								<div class="col s12 input-field">
                                     <div class="col s12 m6">
                                         <button type="submit" class="btn green darken-2 center-align actualizarContrasena" style="width:100%;">Actualizar contraseña</button>
                                     </div>

@@ -7,7 +7,7 @@ $(document).ready(function(){
             regExp:{
                 passRegEx:{
                     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                    errorMessage: 'Contraseña no válida. La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial.'
+                    errorMessage: 'Contraseña no válida.'
                 }
             }
         },
