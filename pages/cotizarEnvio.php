@@ -47,9 +47,11 @@ if($sesion == 1){
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <link href="./../materialize/css/materialize.min.css" rel="stylesheet">
 <link href="./../css/general.css" rel="stylesheet">
+<link href="./../css/cotizarEnvio.css" rel="stylesheet">
 <script src="./../js/jquery-3.6.0.min.js"></script>
 <script src="./../materialize/js/materialize.min.js"></script>
 <script src="./../js/index.js"></script>
+<script src="./../js/cotizarEnvio.js"></script>
 </head>
 <body>
 	<header>
@@ -103,73 +105,187 @@ if($sesion == 1){
 						</div>
 						<form id="formCotizar" autocomplete="off">
 							<div class="row">
-								<div class="col s12 l4">
+								<div class="col s12 m6">
 									<h6><i class="fas fa-map"></i> Datos de origen *</h6>
-									<div class="input-field col s12">
-										<select>
+									<div class="input-field">
+										<select id="selectTipoOrigen">
 											<option value="" disabled selected>Selecciona</option>
-											<option value="1">Ciudad de México</option>
-											<option value="2">Estado de México</option>
-											<option value="3">Morelos</option>
+											<option value="1">Domicilio particular</option>
+											<option value="2">Centro de envíos</option>
 										</select>
-										<label>Estado</label>
+										<label>Ubicación de origen</label>
 									</div>
-									<div class="col s12 input-field">
-										<label for="ciudadOrigen">Municipio/Alcaldía</label>
-										<input type="text" id="ciudadOrigen" name="ciudadOrigen" class="validate" required>
+									<div class="origenCentro" hidden>
+										<div class="input-field">
+											<select id="estadoOrigenC" name="estadoOrigen">
+												<option value="" disabled selected>Selecciona</option>
+												<option value="1">Ciudad de México</option>
+												<option value="2">Estado de México</option>
+												<option value="3">Morelos</option>
+											</select>
+											<label>Estado</label>
+										</div>
+										<div class="input-field">
+											<label for="ciudadOrigenC">Municipio/Alcaldía</label>
+											<input type="text" id="ciudadOrigenC" name="ciudadOrigenC" class="validate" required>
+										</div>
+										<div class="input-field">
+											<select id="centroOrigenC" name="centroOrigenC">
+												<option value="" disabled selected>Selecciona</option>
+												<option value="1">C1</option>
+												<option value="2">C2</option>
+												<option value="3">C3</option>
+											</select>
+											<label>Centro de distribución</label>
+										</div>
 									</div>
-									<div class="input-field col s12">
-										<select>
-											<option value="" disabled selected>Selecciona</option>
-											<option value="1">C1</option>
-											<option value="2">C2</option>
-											<option value="3">C3</option>
-										</select>
-										<label>Centro de distribución</label>
+									<div class="origenDomicilio" hidden>
+										<div class="input-field">
+											<select id="estadoOrigenD" name="estadoOrigenD">
+												<option value="" disabled selected >Selecciona</option>
+												<option value="1">Ciudad de México</option>
+												<option value="2">Estado de México</option>
+												<option value="3">Morelos</option>
+											</select>
+											<label>Estado</label>
+										</div>
+										<div class="input-field">
+											<label for="ciudadOrigenD">Municipio/Alcaldía</label>
+											<input type="text" id="ciudadOrigenD" name="ciudadOrigenD" class="validate" required>
+										</div>
+										<div class="input-field">
+											<label for="cpOrigenD">Código postal</label>
+											<input type="text" id="cpOrigenD" name="cpOrigenD" class="validate" required>
+										</div>
+										<div class="input-field">
+											<label for="calleOrigenD">Calle y número</label>
+											<input type="text" id="calleOrigenD" name="calleOrigenD" class="validate" required>
+										</div>
 									</div>
 								</div>
-								<div class="col s12 l4">
+								<div class="col s12 m6">
 									<h6><i class="fas fa-location-arrow"></i> Datos de destino *</h6>
-									<div class="input-field col s12">
-										<select>
-											<option value="" disabled selected >Selecciona</option>
-											<option value="1">Ciudad de México</option>
-											<option value="2">Estado de México</option>
-											<option value="3">Morelos</option>
+									<div class="input-field">
+										<select id="selectTipoDestino">
+											<option value="" disabled selected>Selecciona</option>
+											<option value="1">Domicilio particular</option>
+											<option value="2">Centro de envíos</option>
 										</select>
-										<label>Estado</label>
+										<label>Ubicación de origen</label>
 									</div>
-									<div class="col s12 input-field">
-										<label for="ciudadDestino">Municipio/Alcaldía</label>
-										<input type="text" id="ciudadDestino" name="ciudadDestino" class="validate" required>
+									<div class="destinoCentro" hidden>
+										<div class="input-field">
+											<select id="estadoDestinoC" name="estadoDestinoC">
+												<option value="" disabled selected>Selecciona</option>
+												<option value="1">Ciudad de México</option>
+												<option value="2">Estado de México</option>
+												<option value="3">Morelos</option>
+											</select>
+											<label>Estado</label>
+										</div>
+										<div class="input-field">
+											<label for="ciudadDestinoC">Municipio/Alcaldía</label>
+											<input type="text" id="ciudadDestinoC" name="ciudadDestinoC" class="validate" required>
+										</div>
+										<div class="input-field">
+											<select id="centroDestinoC" name="centroDestinoC">
+												<option value="" disabled selected>Selecciona</option>
+												<option value="1">C1</option>
+												<option value="2">C2</option>
+												<option value="3">C3</option>
+											</select>
+											<label>Centro de distribución</label>
+										</div>
 									</div>
-									<div class="col s12 input-field">
-										<label for="cp">Código postal</label>
-										<input type="text" id="cp" name="cp" class="validate" required>
+									<div class="destinoDomicilio" hidden>
+										<div class="input-field">
+											<select id="estadoDestinoD" name="estadoDestinoD">
+												<option value="" disabled selected >Selecciona</option>
+												<option value="1">Ciudad de México</option>
+												<option value="2">Estado de México</option>
+												<option value="3">Morelos</option>
+											</select>
+											<label>Estado</label>
+										</div>
+										<div class="input-field">
+											<label for="ciudadDestinoD">Municipio/Alcaldía</label>
+											<input type="text" id="ciudadDestinoD" name="ciudadDestinoD" class="validate" required>
+										</div>
+										<div class="input-field">
+											<label for="cpDestinoD">Código postal</label>
+											<input type="text" id="cpDestinoD" name="cpDestinoD" class="validate" required>
+										</div>
+										<div class="input-field">
+											<label for="calleDestinoD">Calle y número</label>
+											<input type="text" id="calleDestinoD" name="calleDestinoD" class="validate" required>
+										</div>
 									</div>
-									<div class="col s12 input-field">
-										<label for="calle">Calle y número</label>
-										<input type="text" id="calle" name="calle" class="validate" required>
-									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col s12 l8 infoBox">
+									<h6><i class="fas fa-info"></i> Información sobre tipos de paquete</h6>
+									<table class="responsive-table striped">
+										<thead>
+											<th>Tipo</th>
+											<th>Dimensiones (cm)</th>
+											<th>Peso máximo</th>
+											<th>Precio base</th>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Pequeño</td>
+												<td>33.7x18.2x11.0</td>
+												<td>1 kg</td>
+												<td>MXN$ 150.00</td>
+											</tr>
+											<tr>
+												<td>Mediano</td>
+												<td>33.7x32.2x34.5</td>
+												<td>10 kg</td>
+												<td>MXN$ 850.00</td>
+											</tr>
+											<tr>
+												<td>Grande</td>
+												<td>41.7x35.9x36.9</td>
+												<td>15 kg</td>
+												<td>MXN$ 1,300.00</td>
+											</tr>
+											<tr>
+												<td>Max</td>
+												<td>54.1x44.4x40.9</td>
+												<td>25 kg</td>
+												<td>MXN$ 1,800.00</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 								<div class="col s12 l4">
 									<h6><i class="fas fa-box"></i> Datos del paquete *</h6>
-									<div class="col s12 input-field">
-										<label for="longitud">Longitud</label>
-										<input type="number" id="longitud" name="longitud" class="validate" required>
-									</div>
-									<div class="col s12 input-field">
-										<label for="ancho">Ancho</label>
-										<input type="number" id="ancho" name="ancho" class="validate" required>
-									</div>
-									<div class="col s12 input-field">
-										<label for="altura">Altura</label>
-										<input type="number" id="altura" name="altura" class="validate" required>
-									</div>
-									<div class="col s12 input-field">
-										<label for="peso">Peso</label>
-										<input type="number" id="peso" name="peso" class="validate" required>
-									</div>
+									<label>
+										<p>
+											<input class="with-gap" name="tipoPaquete" type="radio"/>
+											<span>Pequeño</span>
+										</p>
+									</label>
+									<label>
+										<p>
+											<input class="with-gap" name="tipoPaquete" type="radio"/>
+											<span>Mediano</span>
+										</p>
+									</label>
+									<label>
+										<p>
+											<input class="with-gap" name="tipoPaquete" type="radio"/>
+											<span>Grande</span>
+										</p>
+									</label>
+									<label>
+										<p>
+											<input class="with-gap" name="tipoPaquete" type="radio"/>
+											<span>Max</span>
+										</p>
+									</label>
 								</div>
 							</div>
 							<div class="row">
@@ -178,7 +294,7 @@ if($sesion == 1){
 										<button type="button" class="btn green darken-2 center-align" style="width:100%;">Cotizar</button>
 									</a>
 								</div>
-								<div class="col s12 m4 input-field">
+								<div class="col s12 m4 input-field limpiar">
 									<button type="reset" class="btn yellow darken-2 center-align" style="width:100%;">Limpiar</button>
 								</div>
 								<div class="col s12 m4 input-field">
