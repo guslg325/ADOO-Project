@@ -2,7 +2,7 @@
 session_start();
 $sesion = isset($_SESSION["login"]);
 
-$conec = mysqli_connect("localhost:33066","root","","squid");
+$conec = mysqli_connect("localhost","root","","squid");
 mysqli_set_charset($conec,"utf8");
 
 if($sesion == 1){
