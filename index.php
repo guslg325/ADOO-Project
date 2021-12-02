@@ -72,9 +72,9 @@ if($sesion == 1){
 						//No hay sesion de usuario
 					}
 				?>
-					<li><a href='<?php if($sesion) echo "./pages/logout.php"; else echo "./pages/login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
 					<?php if(!$sesion) echo "<li><a href='./pages/registrar.html'>Crear cuenta</a></li>";?>
 					<li><a href='./pages/rastrear.php'>Rastrear paquete</a></li>
+					<li><a href='<?php if($sesion) echo "./pages/logout.php"; else echo "./pages/login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
 			</ul>
 			</div>
 		</nav> <!-- /menu -->
@@ -91,9 +91,9 @@ if($sesion == 1){
 					//No hay sesion de usuario
 				}
 			?>
-			<li><a href='<?php if($sesion) echo "./pages/logout.php"; else echo "./pages/login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
 			<?php if(!$sesion) echo "<li><a href='./pages/registrar.html'>Crear cuenta</a></li>";?>
 			<li><a href='./pages/rastrear.php'>Rastrear paquete</a></li>
+			<li><a href='<?php if($sesion) echo "./pages/logout.php"; else echo "./pages/login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
 			<li><a href="index.php"> Pagina inicial </a></li>
 		</ul> <!-- /menu celular-->
 	</header>
