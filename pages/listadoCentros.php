@@ -2,7 +2,7 @@
 session_start();
 $sesion = isset($_SESSION["login"]);
 
-$conec = mysqli_connect("localhost","root","","squid");
+$conec = mysqli_connect("localhost:33066","root","","squid");
 mysqli_set_charset($conec,"utf8");
 
 if($sesion == 1){
@@ -115,37 +115,49 @@ if($sesion == 1){
                             </div>    
                         </div>
 
-                        <h3>&nbspCentros de Distribución</h3>
+                        <h3>&nbspCentros de Envío</h3>
 
                         <div class="row">
 							<div class="col s12 m12">
 								<table class="responsive-table">
 									<thead>
 										<tr>
-											<th>Id</th>
-											<th>Dirección</th>
-											<th>Telefono de contacto</th>
-                                            <th>Horario</th>
+											<th>ID de centro</th>
+											<th>Ubicación de centro</th>
+											<th>Calle y número</th>
+                                            <th>Encargado asignado</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td>1</td>
-											<td>Via Morelos Núm. 178-G Ecatepec, Ciudad de México 55080</td>
-											<td>55 1115 5030</td>
-                                            <td>De Lunes a Sabado de 11:00 am a 7:00 pm</td>
+											<td>C0</td>
+											<td>Tlalpan, Ciudad de México</td>
+											<td>Calzada de Tlalpan #106</td>
+                                            <td>Enrique García López</td>
                                         </tr>
 										<tr>
-											<td>2</td>
-											<td>Av. Central Fracc. VI Lt. 5. Sta Cruz Venta Carpio Ecatepec de Morelos, Estado de México 55065</td>
-											<td>55 8912 9502</td>
-                                            <td>De Lunes a Sabado de 9:30 am a 6:00 pm</td>
+											<td>C1</td>
+											<td>Atizapán, Estado de México</td>
+											<td>Adolfo López Mateos #133</td>
+                                            <td>Alondra Garcia Cruz</td>
                                         </tr>
                                         <tr>
-											<td>3</td>
-											<td>Av. José López Portillo, Local L-04 55010 Ecatepec, Ciudad de México MX</td>
-											<td>55 2622 4932</td>
-                                            <td>De Martes a Domingo de 9:00 am a 7:00 pm</td>
+											<td>C2</td>
+											<td>Cuernavaca, Morelos</td>
+											<td>Calle de los 50 metro #27</td>
+                                            <td>Fabian Cano Cortes</td>
+                                        </tr>
+										<tr>
+											<td>C3</td>
+											<td>Ecatepec, Estado de México</td>
+											<td>Centenario #2033</td>
+                                            <td>Clara Miranda Lopez</td>
+                                        </tr>
+										<tr>
+											<td>C4</td>
+											<td>Benito Juárez, Ciudad de México</td>
+											<td>Av Independencia #111</td>
+                                            <td>Jaime Aguilar Cruz</td>
                                         </tr>
 									</tbody>
 								</table>   
