@@ -8,6 +8,10 @@ $(document).ready(function(){
                 passRegEx:{
                     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
                     errorMessage: 'Contraseña no válida.'
+                },
+                nameRegEx:{
+                    pattern: /[A-Za-z]/,
+                    errorMessage: 'Introduzca sólo caracteres alfabéticos en el nombre.'
                 }
             }
         },

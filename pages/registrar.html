@@ -50,15 +50,15 @@
 						<div class="row">
 							<form id="formRegistro" autocomplete="off">
 								<div class="col s12 input-field">
-									<label for="correo">Correo electrónico</label>
+									<label for="correo">Correo electrónico *</label>
 									<input class="validate" type="email" id="correo" name="correo" data-validetta="required,email,minLength[8]" required>
 								</div>
 								<div class="col s12 input-field">
-									<label for="usuario">Nombre</label>
-									<input class="validate" type="text" id="usuario" name="usuario" data-validetta="required" required>
+									<label for="usuario">Nombre *</label>
+									<input class="validate" type="text" id="usuario" name="usuario" data-validetta="required,regExp[nameRegEx]" required>
 								</div>
 								<div class="col s12 input-field">
-									<label for="contrasena">Contraseña</label>
+									<label for="contrasena">Contraseña *</label>
 									<input class="validate" type="password" id="contrasena" name="contrasena" data-validetta="required,minLength[8],regExp[passRegEx]" required>
 								</div>
 								<div class="col s12">

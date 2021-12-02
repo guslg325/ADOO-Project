@@ -101,32 +101,30 @@ if($sesion == 1){
 						<div class="row">
 							<center><h3><i class="fas fa-box"></i> INGRESA TU NÚMERO DE RASTREO</h3></center>
 						</div>
-								<form id="formRastrear" autocomplete="off">
-					<div class="row">
-					
-							<div class="col s12">
-										
-											<div class="col s12 input-field">
-												<label for="guia">Número de rastreo</label>
-												<input type="text" id="guia" name="guia" class="validate" required>
-										  </div>
-											
-										</div>
-							  <p align="center"><img src="../img/delivery.jpeg" width="400" height="223" alt=""/></p>				</div>
-									<div class="row">
-										<div class="col s12 l3"></div>
-										<div class="col s12 l3 input-field">
-											<a href="resultadoRastreo.php">
-												<button type="button" class="btn green darken-2 center-align" style="width:100%;">Rastrear</button>
-											</a>
-										</div>
-										<div class="col s12 l3 input-field">
-											<a href="./../index.php">
-												<button type="button" class="btn red darken-2 center-align" style="width:100%;">Cancelar</button>
-											</a>
-										</div>
+						<form id="formRastrear" autocomplete="off">
+							<div class="row">
+								<div class="col s12">
+									<div class="col s12 input-field">
+										<label for="guia">Número de rastreo *</label>
+										<input type="text" id="guia" name="guia" class="validate" required>
 									</div>
-								</form>
+								</div>
+							</div>
+							<p align="center"><img src="../img/delivery.jpeg" width="400" height="223" alt=""/></p>				</div>
+							<div class="row">
+								<div class="col s12 l3"></div>
+								<div class="col s12 l3 input-field">
+									<a href="resultadoRastreo.php">
+										<button type="button" class="btn green darken-2 center-align" style="width:100%;">Rastrear</button>
+									</a>
+								</div>
+								<div class="col s12 l3 input-field">
+									<a href="./../index.php">
+										<button type="button" class="btn red darken-2 center-align" style="width:100%;">Cancelar</button>
+									</a>
+								</div>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
