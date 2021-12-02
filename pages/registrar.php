@@ -1,4 +1,14 @@
 <?php
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/SMTP.php';
+require 'PHPMailer/PHPMailer.php';
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
 $conec = mysqli_connect("localhost","root","","squid");//("localhost","USUARIO","CONTRASENA","AQUI ES EL NOMBRE DE LA BASE")
 mysqli_set_charset($conec,"utf8");//Permite el uso de acentos en las vocales
 
@@ -29,8 +39,35 @@ else
 			$respAX["codigo"] = 0;
 			$respAX["msj"] = "Error al ejecutar la query.";
 		}else{
+			try {
+				//Server settings
+				$mail->SMTPDebug  = SMTP::DEBUG_SERVER;             //Send using SMTP
+				$mail->isSMTP();                                    //Send using SMTP
+				$mail->Host       = 'smtp.gmail.com';               //Set the SMTP server to send through
+				$mail->SMTPAuth   = true;                           //Enable SMTP authentication
+				$mail->Username   = 'multides27@gmail.com';         //SMTP username
+				$mail->Password   = '5517006601Qwerty';             //SMTP password
+				$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; //Enable implicit TLS encryption
+				$mail->Port       = 587;                            //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+			
+				//Recipients
+				$mail->setFrom('multides27@gmail.com', 'Paqueteria SQUID');
+				$mail->addAddress($correo);     //Add a recipient
+			
+				//Content
+				$mail->isHTML(true);                                  //Set email format to HTML
+				$mail->Subject = 'Paquetería SQUID - Registro Exitoso.';
+				$mail->Body    = "<h1>Paquetería SQUID - Manejo de cuentas de usuario</h1><h3>Estimado(a) Usuario(a)</h3><h5>Usted se ha registrado exitosamente.<br>
+				Puede ingresar con el siguiente link <a href=localhost/ADOO-Project/pages/login.html>INICIAR SESIÓN.</a></h5>";
+			
+				$mail->send();//Se envia el mail
+				
+			} catch (Exception $e) {
+				$respAX["codigo"] = 0; //Codigo de estado que se devuevle para determinar el estado del login 1=exito, 0=error
+				$respAX["msj"] = "Error al enviar correo: {$mail->ErrorInfo}";//Mensaje que se desplegara en el alert
+			}
 			$respAX["codigo"] = 1;
-			$respAX["msj"] = "Registro exitoso.";
+			$respAX["msj"] = "Correo de bienvenida enviado. No olvide revisar SPAM.";
 		}
 	}
 }
