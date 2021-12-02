@@ -38,7 +38,7 @@ if($vali==1)//SI DETECTA UNA COLUMNA, ES QUE SI EXISTE EL USUARIO CON LA CONTRAS
         $mail->Port       = 587;                            //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
     
         //Recipients
-        $mail->setFrom('multides27@gmail.com', 'Paqueteria SQUID');
+        $mail->setFrom('maildelproyectoescolar@gmail.com', 'Paqueteria SQUID');
         $mail->addAddress($correo);     //Add a recipient
     
         //Content
