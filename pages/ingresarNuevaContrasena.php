@@ -30,7 +30,7 @@ if($pass1==$pass2){
 else//No coinciden las contrasenas
 {
 	$respAX["codigo"] = 0; //Codigo de estado que se devuevle para determinar el estado del login 1=exito, 0=error
-	$respAX["msj"] = "Error: Las contraseñas no coinciden.";//Mensaje que se desplegara en el alert
+	$respAX["msj"] = "Las contraseñas no coinciden.";//Mensaje que se desplegara en el alert
 }
 
 echo json_encode($respAX);//Resultado que se regresara al js para mostrar el mensaje pertinente
