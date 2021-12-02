@@ -2,7 +2,7 @@
 session_start();
 $sesion = isset($_SESSION["login"]);
 
-$conec = mysqli_connect("localhost","root","","squid");
+$conec = mysqli_connect("localhost:33066","root","","squid");
 mysqli_set_charset($conec,"utf8");
 
 if($sesion == 1){
@@ -126,7 +126,7 @@ if($sesion == 1){
 						</div>
 						<div class="card-action">
 							<a href="./pages/listadoCentros.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-								<b>Consulta nuestros centros de distribución</b>
+								<b>Consulta nuestros centros de envío</b>
 							</a>
 						</div>
 					</div>
