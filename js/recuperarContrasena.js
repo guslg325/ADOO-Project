@@ -1,5 +1,8 @@
 $(document).ready(function(){
 	$("form#formRecuContra").validetta({
+		showErrorMessages : true, // If you dont want to display error messages set this option false
+		display : 'bubble', // bubble or inline
+		errorClass : 'validetta-error',
 		bubblePosition:"bottom",//Posicion del mensaje de error
         bubbleGapTop: 10,//opciones del mensaje de error
         bubbleGapLeft: -5,

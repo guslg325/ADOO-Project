@@ -11,7 +11,7 @@
 <link href="./../materialize/css/materialize.min.css" rel="stylesheet">
 <link href="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css" rel="stylesheet">
 <link href="./../css/general.css" rel="stylesheet">
-<link href="./../css/validetta.min.css">
+<link href="./../css/validetta.min.css" rel="stylesheet" type="text/css" media="screen" >
 <script src="./../js/jquery-3.6.0.min.js"></script>
 <script src="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js"></script>
 <script src="./../materialize/js/materialize.min.js"></script>
@@ -54,7 +54,7 @@
 						<form id="formRecuContra" autocomplete="off">
 							<div class="col s12 input-field">
 								<label for="email">Correo</label>
-								<input type="email" id="email" name="email" data-validetta="required">
+								<input type="text" id="email" name="email" data-validetta="required,email">
 							</div>
 							<div class="col s6 input-field">
 								<button type="submit" class="btn green darken-2 center-align" style="width:100%;">Aceptar</button>

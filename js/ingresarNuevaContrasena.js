@@ -7,7 +7,7 @@ $(document).ready(function(){
             regExp:{
                 passRegEx:{
                     pattern: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
-                    errorMessage: 'El formato de la contraseña es erróneo.'
+                    errorMessage: 'Contraseña no válida.'
                 }
             }
         },

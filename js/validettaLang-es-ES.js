@@ -3,8 +3,8 @@
 	$.validettaLanguage = {
 		init : function(){
 			$.validettaLanguage.messages = {
-				required	: 'Campo obligatorio.',
-				email		: 'Correo electrónico no válido.',
+				required	: 'Rellena este campo.',
+				email		: 'Incluye un @ en la dirección de correo electrónico. Escribe una parte después del simbolo "@".',
 				number		: 'Este campo sólo acepta valores numéricos.',
 				maxLength	: 'Este campo acepta como máximo {count} caracteres.',
 				minLength	: 'Este campo requiere como mínimo {count} caracteres.',
