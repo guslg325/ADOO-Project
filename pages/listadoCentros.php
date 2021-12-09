@@ -65,7 +65,7 @@ if($sesion == 1){
 				<?php
 					if($sesion){
 						//Hay sesion de usuario, muestra menú personalizado
-						$opciones = "<li><a href='./ingresarNuevaContrasena.php'><i class='fas fa-user-circle'></i> $nombre</li></a>
+						$opciones = "<li><i class='fas fa-user-circle'></i> $nombre</li>
 						<li><a href='./realizarEnvio.php'>Realizar envío</a></li>
 						<li><a href='./gestionarEnvio.php'>Gestionar envío</a></li>
 						<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>";
