@@ -40,7 +40,7 @@ if($sesion == 1){
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Centros de Envío</title>
+<title>Centros de distribución</title>
 <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'/>
 <meta name="description" content="">
 <meta name="keywords" content="">
@@ -65,21 +65,18 @@ if($sesion == 1){
 				<?php
 					if($sesion){
 						//Hay sesion de usuario, muestra menú personalizado
-						$opciones = "<li><i class='fas fa-user-circle'></i> $nombre</li>
-						<li><a href='./pages/realizarEnvio.php'>Realizar envío</a></li>
-						<li><a href='./pages/gestionarEnvio.php'>Gestionar envío</a></li>
-						<li><a href='./pages/cotizarEnvio.php'>Cotizar un envío</a></li>
-						<li><a href='./pages/rastrear.php'>Rastrear paquete</a></li>
-						<li><a href='./pages/logout.php'>Cerrar sesión</a></li>";
+						$opciones = "<li><a href='./ingresarNuevaContrasena.php'><i class='fas fa-user-circle'></i> $nombre</li></a>
+						<li><a href='./realizarEnvio.php'>Realizar envío</a></li>
+						<li><a href='./gestionarEnvio.php'>Gestionar envío</a></li>
+						<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>";
 						echo $opciones;
 					}else{
 						//No hay sesion de usuario
-						$opciones = "<li><a href='./pages/login.html'>Iniciar sesión</a></li>
-						<li><a href='./pages/registrar.html'>Crear cuenta</a></li>
-						<li><a href='./pages/rastrear.php'>Rastrear paquete</a></li>";
-						echo $opciones;
 					}
-				?>	
+				?>
+				<li><a href='<?php if($sesion) echo "./logout.php"; else echo "./login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
+				<li><a href='./rastrear.php'>Rastrear paquete</a></li>
+					
 			</ul>
 			</div>
 		</nav> <!-- /menu -->
@@ -87,21 +84,17 @@ if($sesion == 1){
 			<?php
 				if($sesion){
 					//Hay sesion de usuario, muestra menú personalizado
-					$opciones = "<li><i class='fas fa-user-circle'></i> $nombre</li>
-					<li><a href='./pages/realizarEnvio.php'>Realizar envío</a></li>
-					<li><a href='./pages/gestionarEnvio.php'>Gestionar envío</a></li>
-					<li><a href='./pages/cotizarEnvio.php'>Cotizar un envío</a></li>
-					<li><a href='./pages/rastrear.php'>Rastrear paquete</a></li>
-					<li><a href='./pages/logout.php'>Cerrar sesión</a></li>";
+					$opciones = "<li><a href='./ingresarNuevaContrasena.php'><i class='fas fa-user-circle'></i> $nombre</li></a>
+					<li><a href='./realizarEnvio.php'>Realizar envío</a></li>
+					<li><a href='./gestionarEnvio.php'>Gestionar envío</a></li>
+					<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>";
 					echo $opciones;
 				}else{
 					//No hay sesion de usuario
-					$opciones = "<li><a href='./pages/login.html'>Iniciar sesión</a></li>
-					<li><a href='./pages/registrar.html'>Crear cuenta</a></li>
-					<li><a href='./pages/rastrear.php'>Rastrear paquete</a></li>";
-					echo $opciones;
 				}
 			?>
+			<li><a href='<?php if($sesion) echo "./logout.php"; else echo "./login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
+			<li><a href='./rastrear.php'>Rastrear paquete</a></li>
 			<li><a href="./../index.php"> Pagina inicial </a></li>
 		</ul> <!-- /menu celular-->
 	</header>
@@ -126,47 +119,31 @@ if($sesion == 1){
 
                         <div class="row">
 							<div class="col s12 m12">
+							<?php
+						// Te recomiendo utilizar esta conección, la que utilizas ya no es la recomendada. 
+						$link = new PDO('mysql:host=localhost;dbname=squid', 'root', ''); // el campo vaciío es para la password. 
+						?>
 								<table class="responsive-table">
 									<thead>
 										<tr>
 											<th>ID de centro</th>
 											<th>Ubicación de centro</th>
 											<th>Calle y número</th>
+											<th>CP</th>
                                             <th>Encargado asignado</th>
 										</tr>
 									</thead>
-									<tbody>
+									<?php foreach ($link->query('SELECT * from centros') as $row){ // aca puedes hacer la consulta e iterarla con each. ?> 
 										<tr>
-											<td>C0</td>
-											<td>Tlalpan, Ciudad de México</td>
-											<td>Calzada de Tlalpan #106</td>
-                                            <td>Enrique García López</td>
-                                        </tr>
-										<tr>
-											<td>C1</td>
-											<td>Atizapán, Estado de México</td>
-											<td>Adolfo López Mateos #133</td>
-                                            <td>Alondra Garcia Cruz</td>
-                                        </tr>
-                                        <tr>
-											<td>C2</td>
-											<td>Cuernavaca, Morelos</td>
-											<td>Calle de los 50 metro #27</td>
-                                            <td>Fabian Cano Cortes</td>
-                                        </tr>
-										<tr>
-											<td>C3</td>
-											<td>Ecatepec, Estado de México</td>
-											<td>Centenario #2033</td>
-                                            <td>Clara Miranda Lopez</td>
-                                        </tr>
-										<tr>
-											<td>C4</td>
-											<td>Benito Juárez, Ciudad de México</td>
-											<td>Av Independencia #111</td>
-                                            <td>Jaime Aguilar Cruz</td>
-                                        </tr>
-									</tbody>
+										<td><?php echo "C".$row['id'] // aca te faltaba poner los echo para que se muestre el valor de la variable.  ?></td>
+										<td><?php echo $row['ubicacion'] ?></td>
+ 									   <td><?php echo $row['calle'] ?></td>
+										<td><?php echo $row['CP'] ?></td>
+										<td><?php echo $row['encargado'] ?></td>
+										</tr>
+										<?php
+										}
+										?>
 								</table>   
 							</div>
 						</div>
