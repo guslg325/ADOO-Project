@@ -11,12 +11,24 @@ $selectTipoOrigen = $_POST['selectTipoOrigen'];
 $selectTipoDestino = $_POST['selectTipoDestino'];
 $tipoPaquete = $_POST['tipoPaquete'];//RECUPERAMOS LA CONTRASENA DEL FORMULARIO
 $peso = $_POST['peso'];
+$error = 0;
+$respAX = array();
+
+if($selectTipoOrigen == $selectTipoDestino){
+  if($selectTipoOrigen == '2'){
+    if($_POST['centroOrigenC'] == $_POST['centroDestinoC']){
+      $respAX["codigo"]=0;
+      $respAX["msj"]="Destino no válido.";
+      $error = 1;
+    }
+  }
+}
 
 if($selectTipoOrigen == '1'){// PARA DOMICILIO
-  $cpOrigenD = $_POST['cpOrigenD'];//RECUPERAMOS LA CONTRASENA DEL FORMULARIO
+  $cpOrigenD = $_POST['cpOrigenD'];
   $resultado = mysqli_query($conec,"SELECT * FROM estados WHERE CP = '$cpOrigenD'");//QUERY
-//Valida que la consulta esté bien hecha
-if( $resultado ){
+  //Valida que la consulta esté bien hecha
+  if($resultado){
     //Ahora valida que la consuta haya traido registros
     if( mysqli_num_rows( $resultado ) > 0){
       //Mientras mysqli_fetch_array traiga algo, lo agregamos a una variable temporal
@@ -34,34 +46,34 @@ if($selectTipoOrigen == '2'){ //para el centro
   $r1 = mysqli_query($conec,"SELECT * FROM centros WHERE id = '$centroOrigenC'");//QUERY
   //Valida que la consulta esté bien hecha
   if( $r1 ){
-      //Ahora valida que la consuta haya traido registros
-      if( mysqli_num_rows( $r1 ) > 0){
-        //Mientras mysqli_fetch_array traiga algo, lo agregamos a una variable temporal
-        while($fila = mysqli_fetch_array( $r1 ) ){
-          //Ahora $fila tiene la primera fila de la consulta, pongamos que tienes
-          //un campo en tu DB llamado NOMBRE, así accederías
-          $cpOrigenD=$fila['CP'];
-        }
+    //Ahora valida que la consuta haya traido registros
+    if( mysqli_num_rows( $r1 ) > 0){
+      //Mientras mysqli_fetch_array traiga algo, lo agregamos a una variable temporal
+      while($fila = mysqli_fetch_array( $r1 ) ){
+        //Ahora $fila tiene la primera fila de la consulta, pongamos que tienes
+        //un campo en tu DB llamado NOMBRE, así accederías
+        $cpOrigenD=$fila['CP'];
       }
     }
-    $resultado = mysqli_query($conec,"SELECT * FROM estados WHERE CP = '$cpOrigenD'");//QUERY
-    //Valida que la consulta esté bien hecha
-    if( $resultado ){
-        //Ahora valida que la consuta haya traido registros
-        if( mysqli_num_rows( $resultado ) > 0){
-          //Mientras mysqli_fetch_array traiga algo, lo agregamos a una variable temporal
-          while($fila = mysqli_fetch_array( $resultado ) ){
-            //Ahora $fila tiene la primera fila de la consulta, pongamos que tienes
-            //un campo en tu DB llamado NOMBRE, así accederías
-            $lat1=$fila['Latitud'];
-            $lon1=$fila['Longitud'];
-          }
-        }
+  }
+  $resultado = mysqli_query($conec,"SELECT * FROM estados WHERE CP = '$cpOrigenD'");//QUERY
+  //Valida que la consulta esté bien hecha
+  if( $resultado ){
+    //Ahora valida que la consuta haya traido registros
+    if( mysqli_num_rows( $resultado ) > 0){
+      //Mientras mysqli_fetch_array traiga algo, lo agregamos a una variable temporal
+      while($fila = mysqli_fetch_array( $resultado ) ){
+        //Ahora $fila tiene la primera fila de la consulta, pongamos que tienes
+        //un campo en tu DB llamado NOMBRE, así accederías
+        $lat1=$fila['Latitud'];
+        $lon1=$fila['Longitud'];
       }
+    }
+  }
 }
 
 if($selectTipoDestino=='1'){ //DOMICILIO
-  $cpDestinoD = $_POST['cpDestinoD'];//RECUPERAMOS LA CONTRASENA DEL FORMULARIO
+  $cpDestinoD = $_POST['cpDestinoD'];
   $resultado2 = mysqli_query($conec,"SELECT * FROM estados WHERE CP = '$cpDestinoD'");//QUERY
   //Valida que la consulta esté bien hecha
   if( $resultado2 ){
@@ -92,21 +104,21 @@ if($selectTipoDestino=='2'){//para el centro
           $cpDestinoD=$fila['CP'];
         }
       }
-    }
-    $resultado = mysqli_query($conec,"SELECT * FROM estados WHERE CP = '$cpDestinoD'");//QUERY
-    //Valida que la consulta esté bien hecha
-    if( $resultado ){
-        //Ahora valida que la consuta haya traido registros
-        if( mysqli_num_rows( $resultado ) > 0){
-          //Mientras mysqli_fetch_array traiga algo, lo agregamos a una variable temporal
-          while($fila = mysqli_fetch_array( $resultado ) ){
-            //Ahora $fila tiene la primera fila de la consulta, pongamos que tienes
-            //un campo en tu DB llamado NOMBRE, así accederías
-            $lat2=$fila['Latitud'];
-            $lon2=$fila['Longitud'];
-          }
+  }
+  $resultado = mysqli_query($conec,"SELECT * FROM estados WHERE CP = '$cpDestinoD'");//QUERY
+  //Valida que la consulta esté bien hecha
+  if( $resultado ){
+      //Ahora valida que la consuta haya traido registros
+      if( mysqli_num_rows( $resultado ) > 0){
+        //Mientras mysqli_fetch_array traiga algo, lo agregamos a una variable temporal
+        while($fila = mysqli_fetch_array( $resultado ) ){
+          //Ahora $fila tiene la primera fila de la consulta, pongamos que tienes
+          //un campo en tu DB llamado NOMBRE, así accederías
+          $lat2=$fila['Latitud'];
+          $lon2=$fila['Longitud'];
         }
       }
+  }
 }
     //fuera
     $radius = 6371;      // Earth's radius (miles)
@@ -140,5 +152,10 @@ if($selectTipoDestino=='2'){//para el centro
     }
     
     $redon=round($cota,2); //PRECIO DE LA COTIZACION FINAL
-    
+
+    if($error==0){
+      $respAX["codigo"] = 1; //Codigo de estado que se devuevle para determinar el estado del login 1=exito, 0=error
+	    $respAX["msj"] = "Con los datos ingresados, su envío tendría un costo de $".$redon;//Mensaje que se desplegara en el alert
+    }    
+    echo json_encode($respAX);
 ?>

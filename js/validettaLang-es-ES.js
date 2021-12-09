@@ -11,7 +11,8 @@
 				maxChecked	: 'Sólo se puede marcar {count} opciones como máximo.',
 				minChecked	: 'Es necesario marcar como mínimo {count} opciones.',
 				maxSelected	: 'Sólo se puede marcar {count} opciones como máximo.',
-				minSelected	: 'Es necesario marcar como mínimo {count} opciones.',
+				//minSelected	: 'Es necesario marcar como mínimo {count} opciones.',
+				minSelected	: 'Rellena este campo.',
 				notEqual	: 'Los campos no coinciden.',
 				different   : 'Fields cannot be the same as each other',
 				creditCard	: 'Tarjeta de crédito no válida.'

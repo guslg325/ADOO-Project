@@ -49,7 +49,12 @@ if($sesion == 1){
 <link href="./../materialize/css/materialize.min.css" rel="stylesheet">
 <link href="./../css/general.css" rel="stylesheet">
 <link href="./../css/cotizarEnvio.css" rel="stylesheet">
+<link href="./../css/validetta.min.css" rel="stylesheet" type="text/css" media="screen">
+<link href="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css" rel="stylesheet">
 <script src="./../js/jquery-3.6.0.min.js"></script>
+<script src="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js"></script>
+<script src="./../js/validetta.min.js"></script>
+<script src="./../js/validettaLang-es-ES.js"></script>
 <script src="./../materialize/js/materialize.min.js"></script>
 <script src="./../js/index.js"></script>
 <script src="./../js/cotizarEnvio.js"></script>
@@ -104,12 +109,12 @@ if($sesion == 1){
 						<div class="row">
 							<h3>Cotizar envío</h3>
 						</div>
-						<form method="post" action="calcularEnvio.php" autocomplete="off">
+						<form id="formCotizar" autocomplete="off">
 							<div class="row">
 								<div class="col s12 m6">
 									<h6><i class="fas fa-map"></i> Datos de origen *</h6>
 									<div class="input-field">
-										<select id="selectTipoOrigen" name="selectTipoOrigen">
+										<select id="selectTipoOrigen" name="selectTipoOrigen" data-validetta="minSelected[1]">
 											<option value="" disabled selected>Selecciona</option>
 											<option value="1">Domicilio particular</option>
 											<option value="2">Centro de envíos</option>
@@ -117,10 +122,8 @@ if($sesion == 1){
 										<label>Ubicación de origen</label>
 									</div>
 									<div class="origenCentro" hidden>
-										
-										
 										<div class="input-field">
-											<select id="centroOrigenC" name="centroOrigenC">
+											<select id="centroOrigenC" name="centroOrigenC" class="centroOrigenC">
 												<option value="" disabled selected>Selecciona</option>
 												<option value="1">C1</option>
 												<option value="2">C2</option>
@@ -132,11 +135,9 @@ if($sesion == 1){
 										</div>
 									</div>
 									<div class="origenDomicilio" hidden>
-										
-										
 										<div class="input-field">
 											<label for="cpOrigenD">Código postal</label>
-											<input type="text" id="cpOrigenD" name="cpOrigenD" class="validate">
+											<input type="text" id="cpOrigenD" name="cpOrigenD" class="cpOrigenD">
 										</div>
 										
 									</div>
@@ -144,18 +145,16 @@ if($sesion == 1){
 								<div class="col s12 m6">
 									<h6><i class="fas fa-location-arrow"></i> Datos de destino *</h6>
 									<div class="input-field">
-										<select id="selectTipoDestino" name="selectTipoDestino">
+										<select id="selectTipoDestino" name="selectTipoDestino" data-validetta="minSelected[1]">
 											<option value="" disabled selected>Selecciona</option>
 											<option value="1">Domicilio particular</option>
 											<option value="2">Centro de envíos</option>
 										</select>
-										<label>Ubicación de origen</label>
+										<label>Ubicación de destino</label>
 									</div>
 									<div class="destinoCentro" hidden>
-										
-										
 										<div class="input-field">
-											<select id="centroDestinoC" name="centroDestinoC">
+											<select id="centroDestinoC" name="centroDestinoC" class="centroDestinoC">
 												<option value="" disabled selected>Selecciona</option>
 												<option value="1">C1</option>
 												<option value="2">C2</option>
@@ -167,24 +166,22 @@ if($sesion == 1){
 										</div>
 									</div>
 									<div class="destinoDomicilio" hidden>
-										
-					
 										<div class="input-field">
 											<label for="cpDestinoD">Código postal</label>
-											<input type="text" id="cpDestinoD" name="cpDestinoD" class="validate" >
+											<input type="text" id="cpDestinoD" name="cpDestinoD" class="cpDestinoD">
 										</div>
 				
 									</div>
 								</div>
 							</div>
-							
 							<div class="row">
-							<center>
-							<div class="col m6 s12 input-field">
-											<label for="peso">Peso (KG)</label>
-											<input min=0 max=70 step=0.001 type="number" id="peso" name="peso" class="validate" >
+							<div class="col m6 s12">
+							<h6><i class="fas fa-weight-hanging"></i> Peso del paquete *</h6>
+								<div class="input-field">
+									<label for="peso">Peso (KG)</label>
+									<input min=0 max=70 step=0.001 type="number" id="peso" name="peso" data-validetta="required">
+								</div>
 							</div>
-							</center>
 							</div>
 							
 							<div class="row">
@@ -229,7 +226,7 @@ if($sesion == 1){
 									<h6><i class="fas fa-box"></i> Datos del paquete *</h6>
 									<label>
 										<p>
-											<input class="with-gap" name="tipoPaquete" id="tipoPaquete" type="radio" value='1'/>
+											<input class="with-gap" name="tipoPaquete" id="tipoPaquete" type="radio" value='1' data-validetta="required"/>
 											<span>Sobre para documentos</span>
 										</p>
 									</label>
@@ -255,9 +252,7 @@ if($sesion == 1){
 							</div>
 							<div class="row">
 								<div class="col s12 m4 input-field">
-									
 										<button type="submit" class="btn green darken-2 center-align" style="width:100%;">Cotizar</button>
-									
 								</div>
 								<div class="col s12 m4 input-field limpiar">
 									<button type="reset" class="btn yellow darken-2 center-align" style="width:100%;">Limpiar</button>
