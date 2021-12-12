@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conec = mysqli_connect("localhost","root","","squid");//("localhost","USUARIO","CONTRASENA","AQUI ES EL NOMBRE DE LA BASE")
+$conec = mysqli_connect("localhost:33066","root","","squid");//("localhost","USUARIO","CONTRASENA","AQUI ES EL NOMBRE DE LA BASE")
 mysqli_set_charset($conec,"utf8");
 if(!$conec)
 {
@@ -10,7 +10,6 @@ if(!$conec)
 $selectTipoOrigen = $_POST['selectTipoOrigen'];
 $selectTipoDestino = $_POST['selectTipoDestino'];
 $tipoPaquete = $_POST['tipoPaquete'];//RECUPERAMOS LA CONTRASENA DEL FORMULARIO
-$peso = $_POST['peso'];
 $error = 0;
 $respAX = array();
 
@@ -135,27 +134,26 @@ if($selectTipoDestino=='2'){//para el centro
 
     
     if($tipoPaquete == '1'){ //sobre
-      $cota=50+(5*$peso);
+      $pesoVolumetrico=(32*24*1)/5000;
     }
     if($tipoPaquete == '2'){ //sobre
-      $cota=400+(10*$peso);
+      $pesoVolumetrico=(15*15*15)/5000;
     }
     if($tipoPaquete == '3'){ //sobre
-      $cota=650+(15*$peso);
+      $pesoVolumetrico=(25*25*25)/5000;
     }
     if($tipoPaquete == '4'){ //sobre
-      $cota=800+(20*$peso);
+      $pesoVolumetrico=(40*40*40)/5000;
     }
-    if($distance>=100){
-      $pkm=($distance/100)*3; // PRECIO EXTRA A PARTIR DE 100 KM
-      $cota=$cota+$pkm;
-    }
-    
-    $redon=round($cota,2); //PRECIO DE LA COTIZACION FINAL
+
+    $pkm = ($distance/10);
+    $aumentos = intval($pkm);
+    $cotizacion = (100*$aumentos)*($pesoVolumetrico/100);
 
     if($error==0){
       $respAX["codigo"] = 1; //Codigo de estado que se devuevle para determinar el estado del login 1=exito, 0=error
-	    $respAX["msj"] = "Con los datos ingresados, su envío tendría un costo de $".$redon;//Mensaje que se desplegara en el alert
+	    $respAX["msj"] = "Con los datos ingresados, su envío tendría un costo de $".$cotizacion."<br>
+       con un peso volumétrico de ".$pesoVolumetrico."<br> y una distancia entre origen y destino de ".round($distance,2)." km";//Mensaje que se desplegara en el alert
     }    
     echo json_encode($respAX);
 ?>

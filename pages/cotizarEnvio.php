@@ -2,7 +2,7 @@
 session_start();
 $sesion = isset($_SESSION["login"]);
 
-$conec = mysqli_connect("localhost","root","","squid");
+$conec = mysqli_connect("localhost:33066","root","","squid");
 mysqli_set_charset($conec,"utf8");
 
 if($sesion == 1){
@@ -174,15 +174,6 @@ if($sesion == 1){
 									</div>
 								</div>
 							</div>
-							<div class="row">
-							<div class="col m6 s12">
-							<h6><i class="fas fa-weight-hanging"></i> Peso del paquete *</h6>
-								<div class="input-field">
-									<label for="peso">Peso (KG)</label>
-									<input min=0 max=70 step=0.001 type="number" id="peso" name="peso" data-validetta="required">
-								</div>
-							</div>
-							</div>
 							
 							<div class="row">
 								<div class="col s12 l8 infoBox">
@@ -191,33 +182,23 @@ if($sesion == 1){
 										<thead>
 											<th>Tipo</th>
 											<th>Dimensiones</th>
-											
-											<th>Precio base</th>
 										</thead>
 										<tbody>
 											<tr>
 												<td>Sobre para documentos</td>
 												<td>32 x 24 x 1 cm</td>
-												
-												<td>MXN$ 50.00</td>
 											</tr>
 											<tr>
 												<td>Caja pequeña</td>
 												<td>15 x 15 x 15 cm</td>
-												
-												<td>MXN$ 400.00</td>
 											</tr>
 											<tr>
 												<td>Caja mediana</td>
 												<td>25 x 25 x 25 cm</td>
-												
-												<td>MXN$ 650.00</td>
 											</tr>
 											<tr>
 												<td>Caja grande</td>
 												<td>40 x 40 x 40 cm</td>
-												
-												<td>MXN$ 800.00</td>
 											</tr>
 										</tbody>
 									</table>
