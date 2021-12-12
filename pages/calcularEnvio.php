@@ -1,6 +1,6 @@
 <?php
 session_start();
-$conec = mysqli_connect("localhost:33066","root","","squid");//("localhost","USUARIO","CONTRASENA","AQUI ES EL NOMBRE DE LA BASE")
+$conec = mysqli_connect("localhost","root","","squid");//("localhost","USUARIO","CONTRASENA","AQUI ES EL NOMBRE DE LA BASE")
 mysqli_set_charset($conec,"utf8");
 if(!$conec)
 {
