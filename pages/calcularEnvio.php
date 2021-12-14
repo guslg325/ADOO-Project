@@ -12,6 +12,7 @@ $selectTipoDestino = $_POST['selectTipoDestino'];
 $tipoPaquete = $_POST['tipoPaquete'];//RECUPERAMOS LA CONTRASENA DEL FORMULARIO
 $error = 0;
 $respAX = array();
+$precioBase = 100;
 
 if($selectTipoOrigen == $selectTipoDestino){
   if($selectTipoOrigen == '2'){
@@ -148,12 +149,13 @@ if($selectTipoDestino=='2'){//para el centro
 
     $pkm = ($distance/10);
     $aumentos = intval($pkm);
-    $cotizacion = (100*$aumentos)*($pesoVolumetrico/100);
+    $cotizacion = ((100*$aumentos)*($pesoVolumetrico/100))+$precioBase;
 
     if($error==0){
       $respAX["codigo"] = 1; //Codigo de estado que se devuevle para determinar el estado del login 1=exito, 0=error
-	    $respAX["msj"] = "Con los datos ingresados, su envío tendría un costo de $".$cotizacion."<br>
-       con un peso volumétrico de ".$pesoVolumetrico."<br> y una distancia entre origen y destino de ".round($distance,2)." km";//Mensaje que se desplegara en el alert
+	    $respAX["msj"] = "Costo del envío: $".round($cotizacion,2)."<br>
+       Peso volumetrico: ".$pesoVolumetrico." kg<br> 
+       Distancia entre origen y destino: ".round($distance,2)." km";//Mensaje que se desplegara en el alert
     }    
     echo json_encode($respAX);
 ?>

@@ -122,14 +122,21 @@ if($sesion == 1){
 										<label>Ubicación de origen</label>
 									</div>
 									<div class="origenCentro" hidden>
+										<?php		
+											// Te recomiendo utilizar esta conección, la que utilizas ya no es la recomendada. 
+											$db = new PDO('mysql:host=localhost;dbname=squid', 'root', ''); // el campo vaciío es para la password. 
+										?>
 										<div class="input-field">
 											<select id="centroOrigenC" name="centroOrigenC" class="centroOrigenC">
 												<option value="" disabled selected>Selecciona</option>
-												<option value="1">C1</option>
-												<option value="2">C2</option>
-												<option value="3">C3</option>
-												<option value="4">C4</option>
-												<option value="5">C5</option>
+												<?php
+													$query = $db->prepare("SELECT * FROM centros");
+													$query->execute();
+													$data = $query->fetchAll();
+													foreach ($data as $valores):
+														echo '<option value="'.$valores["id"].'">'.$valores["calle"].'&nbsp&nbsp&nbspCP. '.$valores["CP"].'</option>';
+													endforeach;
+												?>
 											</select>
 											<label>Centro de distribución</label>
 										</div>
@@ -152,15 +159,22 @@ if($sesion == 1){
 										</select>
 										<label>Ubicación de destino</label>
 									</div>
-									<div class="destinoCentro" hidden>
+									<div class="destinoCentro" hidden>	
+										<?php		
+											// Te recomiendo utilizar esta conección, la que utilizas ya no es la recomendada. 
+											$db = new PDO('mysql:host=localhost;dbname=squid', 'root', ''); // el campo vaciío es para la password. 
+										?>
 										<div class="input-field">
 											<select id="centroDestinoC" name="centroDestinoC" class="centroDestinoC">
 												<option value="" disabled selected>Selecciona</option>
-												<option value="1">C1</option>
-												<option value="2">C2</option>
-												<option value="3">C3</option>
-												<option value="4">C4</option>
-												<option value="5">C5</option>
+												<?php
+													$query = $db->prepare("SELECT * FROM centros");
+													$query->execute();
+													$data = $query->fetchAll();
+													foreach ($data as $valores):
+														echo '<option value="'.$valores["id"].'">'.$valores["calle"].'&nbsp&nbsp&nbspCP. '.$valores["CP"].'</option>';
+													endforeach;
+												?>
 											</select>
 											<label>Centro de distribución</label>
 										</div>
