@@ -138,7 +138,7 @@ if($sesion == 1){
 													endforeach;
 												?>
 											</select>
-											<label>Centro de distribución</label>
+											<label>Centro de envío</label>
 										</div>
 									</div>
 									<div class="origenDomicilio" hidden>
@@ -176,7 +176,7 @@ if($sesion == 1){
 													endforeach;
 												?>
 											</select>
-											<label>Centro de distribución</label>
+											<label>Centro de envío</label>
 										</div>
 									</div>
 									<div class="destinoDomicilio" hidden>
