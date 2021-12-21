@@ -58,39 +58,43 @@ if($sesion == 1){
 			<a href="./../index.php" class="brand-logo"><img src="./../img/boxLogo50.png"></a>
 			<a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
 			<ul class="right hide-on-med-and-down">
-				<?php
+			<?php
 					if($sesion){
 						//Hay sesion de usuario, muestra menú personalizado
 						$opciones = "<li><i class='fas fa-user-circle'></i> $nombre</li>
 						<li><a href='./realizarEnvio.php'>Realizar envío</a></li>
 						<li><a href='./gestionarEnvio.php'>Gestionar envío</a></li>
-						<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>";
+						<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>
+						<li><a href='./rastrear.php'>Rastrear paquete</a></li>
+						<li><a href='./logout.php'>Cerrar sesión</a></li>";
 						echo $opciones;
 					}else{
 						//No hay sesion de usuario
+						$opciones = "<li><a href='./login.html'>Iniciar sesión</a></li>";
+						echo $opciones;
 					}
 				?>
-				<li><a href='./rastrear.php'>Rastrear paquete</a></li>
-					<li><a href='<?php if($sesion) echo "./logout.php"; else echo "./login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
 			</ul>
 			</div>
 		</nav> <!-- /menu -->
 		<ul class="sidenav" id="mobile-demo">
-			<?php
+		<?php
 				if($sesion){
 					//Hay sesion de usuario, muestra menú personalizado
 					$opciones = "<li><i class='fas fa-user-circle'></i> $nombre</li>
-					<li><a href='./realizarEnvio.php'>Realizar envío</a></li>
-					<li><a href='./gestionarEnvio.php'>Gestionar envío</a></li>
-					<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>";
+					<li><a href='./pages/realizarEnvio.php'>Realizar envío</a></li>
+					<li><a href='./pages/gestionarEnvio.php'>Gestionar envío</a></li>
+					<li><a href='./pages/cotizarEnvio.php'>Cotizar un envío</a></li>
+					<li><a href='./pages/rastrear.php'>Rastrear paquete</a></li>
+					<li><a href='./pages/logout.php'>Cerrar sesión</a></li>";
 					echo $opciones;
 				}else{
 					//No hay sesion de usuario
+					$opciones = "<li><a href='./pages/login.html'>Iniciar sesión</a></li>";
+					echo $opciones;
 				}
 			?>
-			<li><a href='<?php if($sesion) echo "./logout.php"; else echo "./login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
-			<li><a href='./rastrear.php'>Rastrear paquete</a></li>
-			<li><a href="./../index.php"> Pagina inicial </a></li>
+			<li><a href="index.php"> Pagina inicial </a></li>
 		</ul> <!-- /menu celular-->
 	</header>
 	<main>

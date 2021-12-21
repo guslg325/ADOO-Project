@@ -28,7 +28,6 @@ if($sesion == 1){
 	}
 }else{
 	//No hay sesión de usuario
-	header("location: ./login.html");
 }
 ?>
 
@@ -36,20 +35,24 @@ if($sesion == 1){
 	Inicia HTML
 ****************-->
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Generar factura</title>
+<title>Facturar | Paquetería</title>
 <meta name='viewport' content='width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no'/>
 <meta name="description" content="">
 <meta name="keywords" content="">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 <link href="./../materialize/css/materialize.min.css" rel="stylesheet">
-<link href="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css" rel="stylesheet">
 <link href="./../css/general.css" rel="stylesheet">
+<link href="./../css/cotizarEnvio.css" rel="stylesheet">
+<link href="./../css/validetta.min.css" rel="stylesheet" type="text/css" media="screen">
+<link href="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css" rel="stylesheet">
 <script src="./../js/jquery-3.6.0.min.js"></script>
 <script src="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js"></script>
+<script src="./../js/validetta.min.js"></script>
+<script src="./../js/validettaLang-es-ES.js"></script>
 <script src="./../materialize/js/materialize.min.js"></script>
 <script src="./../js/index.js"></script>
 <script src="./../js/facturar.js"></script>
@@ -68,14 +71,17 @@ if($sesion == 1){
 						$opciones = "<li><i class='fas fa-user-circle'></i> $nombre</li>
 						<li><a href='./realizarEnvio.php'>Realizar envío</a></li>
 						<li><a href='./gestionarEnvio.php'>Gestionar envío</a></li>
-						<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>";
+						<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>
+						<li><a href='./rastrear.php'>Rastrear paquete</a></li>
+						<li><a href='./logout.php'>Cerrar sesión</a></li>";
 						echo $opciones;
 					}else{
 						//No hay sesion de usuario
+						$opciones = "<li><a href='./rastrear.php'>Rastrear paquete</a></li>
+						<li><a href='./../index.html'>Cerrar sesión</a></li>";
+						echo $opciones;
 					}
 				?>
-				<li><a href='./rastrear.php'>Rastrear paquete</a></li>
-					<li><a href='<?php if($sesion) echo "./logout.php"; else echo "./login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
 			</ul>
 			</div>
 		</nav> <!-- /menu -->
@@ -86,15 +92,17 @@ if($sesion == 1){
 					$opciones = "<li><i class='fas fa-user-circle'></i> $nombre</li>
 					<li><a href='./realizarEnvio.php'>Realizar envío</a></li>
 					<li><a href='./gestionarEnvio.php'>Gestionar envío</a></li>
-					<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>";
+					<li><a href='./cotizarEnvio.php'>Cotizar un envío</a></li>
+					<li><a href='./rastrear.php'>Rastrear paquete</a></li>
+					<li><a href='./logout.php'>Cerrar sesión</a></li>
+					<li><a href='./../index.php'> Pagina inicial </a></li>";
 					echo $opciones;
 				}else{
 					//No hay sesion de usuario
+					$opciones = "<li><a href='./../index.html'>Cerrar sesión</a></li>";
+					echo $opciones;
 				}
 			?>
-			<li><a href='<?php if($sesion) echo "./logout.php"; else echo "./login.html";?>'><?php if($sesion) echo "Cerrar sesión"; else echo "Iniciar sesión";?></a></li>
-			<li><a href='./rastrear.php'>Rastrear paquete</a></li>
-			<li><a href="./../index.php"> Pagina inicial </a></li>
 		</ul> <!-- /menu celular-->
 	</header>
 
@@ -108,18 +116,18 @@ if($sesion == 1){
                             <form id="formFacturar" autocomplete="off">
                                 <div class="col s12 m6 input-field">
 									<label for="rfc">RFC</label>
-									<input type="text" id="rfc" name="rfc" data-validetta="minLength[13]" class="validate" required>
+									<input type="text" id="rfc" name="rfc" data-validetta="required,minLength[13]">
 								</div>
                                 <div class="col s12 m6 input-field">
 									<label for="razonSocial">Razon Social</label>
-									<input type="text" id="razonSocial" name="razonSocial" class="validate" required>
+									<input type="text" id="razonSocial" name="razonSocial" data-validetta="required">
 								</div>
                                 <div class="col s12 m6 input-field">
 									<label for="direccionFacturacion">Dirección de facturación</label>
-									<input type="text" id="direccionFacturacion" name="direccionFacturacion" class="validate" required>
+									<input type="text" id="direccionFacturacion" name="direccionFacturacion" data-validetta="required">
 								</div>
                                 <div class="col s12 m6 input-field">
-									<select>
+									<select data-validetta="minSelected[1]">
                                         <option value="" disabled selected >Selecciona</option>
                                         <option value="1">Adquisición de mercancias</option>
                                         <option value="2">Devoluciones, descuentos o bonificaciones</option>
@@ -148,17 +156,37 @@ if($sesion == 1){
 								</div>
                                 <div class="col s12 m12 input-field">
 									<label for="correoFactura">Correo electronico</label>
-									<input type="email" id="correoFactura" name="correoFactura" data-validetta="email,minLength[8]" class="validate" required>
+									<input type="email" id="correoFactura" name="correoFactura" data-validetta="required,email,minLength[8]" >
 								</div>
                                 <div class="col s12 m12 input-field">
-                                    <div class="col s12 m6">
-                                        <button type="button" class="btn green darken-2 center-align facturar" style="width:100%;">Enviar</button>
-                                    </div>
-                                    <div class="col s12 m6">
-                                        <a href="gestionarEnvio.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-                                            <button type="button" class="btn red darken-2 center-align" style="width:100%;">Cancelar</button>
-                                        </a>     
-                                    </div>                                    
+									<?php
+										if($sesion){
+											$opciones2 = "<div class='col s12 m6'>
+											<a href='gestionarEnvio.php'>
+												<button type='button' class='btn green darken-2 center-align facturar1' style='width:100%';>Enviar</button>
+											</a> 	 
+											</div>
+											<div class='col s12 m6'>
+												<a href='gestionarEnvio.php'>
+													<button type='button' class='btn red darken-2 center-align' style='width:100%;'>Cancelar</button>
+												</a>     
+											</div>";
+											echo $opciones2;
+										}
+										else{
+											$opciones2 = "<div class='col s12 m6'>
+											<a href='indexEncargadoCentro.html'>
+												<button type='button' class='btn green darken-2 center-align facturar2' style='width:100%';>Enviar</button>
+												</a> 	  
+											</div>
+											<div class='col s12 m6'>
+												<a href='indexEncargadoCentro.html'>
+													<button type='button' class='btn red darken-2 center-align' style='width:100%;'>Cancelar</button>
+												</a>     
+											</div>";
+											echo $opciones2;	
+										}
+									?>                                    
                                 </div>
                             </form>
                         </div> 
