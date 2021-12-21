@@ -103,7 +103,7 @@ $(document).ready(function(){
 									enviar:{
 										text: "Realizar pago",
 										action: function(){
-											window.location.href = "./realizarEnvio.php";
+											window.location.href = "./guardarEnvio.php";
 										}
 									},
 									desccartar:{
