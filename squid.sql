@@ -2,8 +2,8 @@
 -- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:33066
--- Tiempo de generación: 18-12-2021 a las 01:06:30
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 21-12-2021 a las 05:33:27
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.12
 
@@ -75,23 +75,35 @@ INSERT INTO `cliente` (`id_cliente`, `rol_sistema`, `correo_cliente`, `contrasen
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `envio`
+-- Estructura de tabla para la tabla `envios`
 --
 
-CREATE TABLE `envio` (
-  `id_envio` int(11) NOT NULL,
-  `numero_envio` int(11) NOT NULL,
-  `id_cliente` int(11) NOT NULL,
-  `fecha_envio` date DEFAULT NULL,
-  `descripcion_envio` varchar(200) NOT NULL,
-  `empresa_envio` varchar(40) DEFAULT NULL,
-  `lon_envio` float NOT NULL,
-  `al_envio` float NOT NULL,
-  `Monto` float NOT NULL,
-  `ancho_envio` float NOT NULL,
-  `peso_envio` float NOT NULL,
-  `id_direcciones` int(11) NOT NULL
+CREATE TABLE `envios` (
+  `nombreO` varchar(40) NOT NULL,
+  `calleO` varchar(30) NOT NULL,
+  `municipioO` varchar(30) NOT NULL,
+  `estadoO` varchar(30) NOT NULL,
+  `cpO` varchar(5) NOT NULL,
+  `correoO` varchar(25) NOT NULL,
+  `telefonoO` varchar(15) NOT NULL,
+  `nombreD` varchar(40) NOT NULL,
+  `calleD` varchar(30) NOT NULL,
+  `municipioD` varchar(30) NOT NULL,
+  `estadoD` varchar(30) NOT NULL,
+  `cpD` varchar(5) NOT NULL,
+  `correoD` varchar(25) NOT NULL,
+  `telefonoD` varchar(15) NOT NULL,
+  `centroO` varchar(40) NOT NULL,
+  `centroD` varchar(40) NOT NULL,
+  `tipoPaquete` varchar(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `envios`
+--
+
+INSERT INTO `envios` (`nombreO`, `calleO`, `municipioO`, `estadoO`, `cpO`, `correoO`, `telefonoO`, `nombreD`, `calleD`, `municipioD`, `estadoD`, `cpD`, `correoD`, `telefonoD`, `centroO`, `centroD`, `tipoPaquete`) VALUES
+('Ivan', ' ', ' ', ' ', ' ', 'ivan@gmail.com', '12345', 'Jose', ' ', ' ', ' ', ' ', 'jose@gmail.com', '1234567', '1', '3', '2');
 
 -- --------------------------------------------------------
 
@@ -32618,13 +32630,6 @@ ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id_cliente`);
 
 --
--- Indices de la tabla `envio`
---
-ALTER TABLE `envio`
-  ADD PRIMARY KEY (`id_envio`),
-  ADD KEY `id_cliente` (`id_cliente`);
-
---
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -32639,22 +32644,6 @@ ALTER TABLE `centros`
 --
 ALTER TABLE `cliente`
   MODIFY `id_cliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
---
--- AUTO_INCREMENT de la tabla `envio`
---
-ALTER TABLE `envio`
-  MODIFY `id_envio` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `envio`
---
-ALTER TABLE `envio`
-  ADD CONSTRAINT `envio_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
