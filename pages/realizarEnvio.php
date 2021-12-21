@@ -129,7 +129,7 @@ if($sesion == 1){
 									<div class="origenCentro" hidden>
 										<?php		
 											// Te recomiendo utilizar esta conección, la que utilizas ya no es la recomendada. 
-											$db = new PDO('mysql:host=localhost:3307;dbname=squid', 'root', ''); // el campo vaciío es para la password. 
+											$db = new PDO('mysql:host=localhost;dbname=squid', 'root', ''); // el campo vaciío es para la password. 
 										?>
 										<div class="input-field">
 											<select id="centroOrigenC" name="centroOrigenC" class="centroOrigenC">
@@ -214,7 +214,7 @@ if($sesion == 1){
 									<div class="destinoCentro" hidden>	
 										<?php		
 											// Te recomiendo utilizar esta conección, la que utilizas ya no es la recomendada. 
-											$db = new PDO('mysql:host=localhost:3307; dbname=squid', 'root', ''); // el campo vaciío es para la password. 
+											$db = new PDO('mysql:host=localhost; dbname=squid', 'root', ''); // el campo vaciío es para la password. 
 										?>
 										<div class="input-field">
 											<select id="centroDestinoC" name="centroDestinoC" class="centroDestinoC">
