@@ -121,7 +121,7 @@ $(document).ready(function(){
 															boxWidth: "50%",
 															useBootstrap: false,
 															onDestroy: function(){
-																window.location.href = "./../index.php";
+																window.location.href = "./realizarPago.php";
 															}
 														});
 													}
