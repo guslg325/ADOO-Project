@@ -1,5 +1,6 @@
 <?php
 
+$respAX = array();
 //Create an instance; passing `true` enables exceptions
 $conec = mysqli_connect("localhost","root","","squid");//("localhost","USUARIO","CONTRASENA","AQUI ES EL NOMBRE DE LA BASE")
 mysqli_set_charset($conec,"utf8");//Permite el uso de acentos en las vocales
@@ -56,5 +57,7 @@ if($datosOrigen=='2' && $datosDestino=='2'){
     $query = mysqli_query($conec,"INSERT INTO envios VALUES('$nombreO',' ',' ',' ',' ','$correoO','$telefonoO','$nombreD',' ',' ',' ',' ','$correoD','$telefonoD','$centroO','$centroD','$tipoPaquete')");//QUERY 
 }
 
-echo "GUARDADO CON EXITO";
+$respAX["codigo"]="1";
+$respAX["msj"]="Guardado con éxito.";
+echo json_encode($respAX);
 ?>
