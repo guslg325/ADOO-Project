@@ -44,20 +44,26 @@ if($datosDestino=='2'){
     //$query = mysqli_query($conec,"INSERT INTO envios VALUES(nombreO,calleO,municipioO,estadoO,cpO,correoO,telefonoO,nombreD,calleD,municipioD,estadoD,cpD,correoD,telefonoD,centroO,centroD,tipoPaquete)");//QUERY
 }
 $tipoPaquete = $_POST['tipoPaquete'];//RECUPERAMOS LA CONTRASENA DEL FORMULARIO
+$idUsuario = $_POST['idUsuario'];
 if($datosOrigen=='1' && $datosDestino=='1'){
-    $query = mysqli_query($conec,"INSERT INTO envios VALUES('$nombreO','$calleO','$municipioO','$estadoO','$cpO','$correoO','$telefonoO','$nombreD','$calleD','$municipioD','$estadoD','$cpD','$correoD','$telefonoD',' ',' ','$tipoPaquete')");//QUERY
+    $query = mysqli_query($conec,"INSERT INTO envios VALUES('$nombreO','$calleO','$municipioO','$estadoO','$cpO','$correoO','$telefonoO','$nombreD','$calleD','$municipioD','$estadoD','$cpD','$correoD','$telefonoD',' ',' ','$tipoPaquete','','$idUsuario','0')");//QUERY
 }
 if($datosOrigen=='1' && $datosDestino=='2'){
-    $query = mysqli_query($conec,"INSERT INTO envios VALUES('$nombreO','$calleO','$municipioO','$estadoO','$cpO','$correoO','$telefonoO','$nombreD',' ',' ',' ',' ','$correoD','$telefonoD',' ','$centroD','$tipoPaquete')");//QUERY 
+    $query = mysqli_query($conec,"INSERT INTO envios VALUES('$nombreO','$calleO','$municipioO','$estadoO','$cpO','$correoO','$telefonoO','$nombreD',' ',' ',' ',' ','$correoD','$telefonoD',' ','$centroD','$tipoPaquete','','$idUsuario','0')");//QUERY 
 }
 if($datosOrigen=='2' && $datosDestino=='1'){
-    $query = mysqli_query($conec,"INSERT INTO envios VALUES('$nombreO',' ',' ',' ',' ','$correoO','$telefonoO','$nombreD','$calleD','$municipioD','$estadoD','$cpD','$correoD','$telefonoD','$centroO',' ','$tipoPaquete')");//QUERY 
+    $query = mysqli_query($conec,"INSERT INTO envios VALUES('$nombreO',' ',' ',' ',' ','$correoO','$telefonoO','$nombreD','$calleD','$municipioD','$estadoD','$cpD','$correoD','$telefonoD','$centroO',' ','$tipoPaquete','','$idUsuario','0')");//QUERY 
 }
 if($datosOrigen=='2' && $datosDestino=='2'){
-    $query = mysqli_query($conec,"INSERT INTO envios VALUES('$nombreO',' ',' ',' ',' ','$correoO','$telefonoO','$nombreD',' ',' ',' ',' ','$correoD','$telefonoD','$centroO','$centroD','$tipoPaquete')");//QUERY 
+    $query = mysqli_query($conec,"INSERT INTO envios VALUES('$nombreO',' ',' ',' ',' ','$correoO','$telefonoO','$nombreD',' ',' ',' ',' ','$correoD','$telefonoD','$centroO','$centroD','$tipoPaquete','','$idUsuario','0')");//QUERY 
 }
 
+$query2 = mysqli_query($conec, "SELECT * FROM envios WHERE usuarioAsociado = $idUsuario AND status = 0");
+$respuesta = mysqli_fetch_row($query2);
+$guia = $respuesta[17];
+
 $respAX["codigo"]="1";
-$respAX["msj"]="Guardado con éxito.";
+$respAX["msj"]="Envío validado con éxito.";
+$respAX["guia"]=$guia;
 echo json_encode($respAX);
 ?>

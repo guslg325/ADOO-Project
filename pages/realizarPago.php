@@ -53,12 +53,10 @@ if($sesion == 1){
 <link href="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css" rel="stylesheet">
 <script src="./../js/jquery-3.6.0.min.js"></script>
 <script src="./../js/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js"></script>
-	
 <script src="./../js/validetta.min.js"></script>
 <script src="./../js/validettaLang-es-ES.js"></script>
 <script src="./../materialize/js/materialize.min.js"></script>
 <script src="./../js/index.js"></script>
-	
 <script src="./../js/realizarPago.js"></script>	
 </head>
 
@@ -114,14 +112,15 @@ if($sesion == 1){
 							<h3>Realizar pago</h3>
 						</div>
 					    <form id="formRealizarPago" autocomplete="off">
+							<input id="guia" name="guia" type="number" value='<?php echo $_GET['guia'];?>' hidden></input>
                             <div class="row">
                                 <div class="input-field col s12 m12">
                                     <label for="numCard">Numero de tarjeta</label>
-                                    <input type="text" id="numCard" name="numCard" class="nameDestinoC" data-validetta="required,minLength[16],maxLength[16]">
+                                    <input type="text" id="numCard" name="numCard" class="nameDestinoC" data-validetta="required,number,minLength[16],maxLength[16]">
                                 </div>
                                 <div class="input-field col s12 m12">
                                     <label for="titularCard">Titular de la tarjeta</label>
-                                    <input type="text" id="titularCard" name="titularCard" class="nameDestinoC" data-validetta="required">
+                                    <input type="text" id="titularCard" name="titularCard" class="nameDestinoC" data-validetta="required,minLength[10]">
                                 </div>
                                 <div class="input-field col s12 m3">
                                     <select id="mes" name="mes" data-validetta="minSelected[1]">
@@ -161,7 +160,7 @@ if($sesion == 1){
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <label for="codigoCard">Código de seguridad</label>
-                                    <input type="text" id="codigoCard" name="codigoCard" class="nameDestinoC" data-validetta="required,minLength[3],maxLength[4]">
+                                    <input type="text" id="codigoCard" name="codigoCard" class="nameDestinoC" data-validetta="required,number,minLength[3],maxLength[4]">
                                 </div> 
                             </div>
                             <div class="row">

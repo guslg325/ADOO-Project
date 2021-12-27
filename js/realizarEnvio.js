@@ -114,14 +114,14 @@ $(document).ready(function(){
 													let AX;
 													AX = JSON.parse(respAX);//Convierte la respuesta del php en JSON que se guarda en la variable AX
 													if(AX.codigo){
-														$.alert({//Muestra un alert con los
+														$.alert({
 															title:'<h5><i class="fas fa-info"></i> Aviso</h5>',
 															content:AX.msj,//Mensaje personalizado dependiendo de la respuesta del php
 															type:"orange",
 															boxWidth: "50%",
 															useBootstrap: false,
 															onDestroy: function(){
-																window.location.href = "./realizarPago.php";
+																window.location.href = "./realizarPago.php?guia="+AX.guia;
 															}
 														});
 													}

@@ -15,6 +15,7 @@ if($sesion == 1){
 	switch($tipoUsuario){
 		case 0://Index de cliente
 			$nombre = $usuario[4];
+			$query = "SELECT * FROM envio WHERE usuarioAsociado = $usuario[0]";
 		break;
 		case 1://Redirigir al panel del admin
 			echo "<script> window.location.href = './pages/indexAdmin.html'; </script>";

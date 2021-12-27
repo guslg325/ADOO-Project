@@ -12,6 +12,7 @@ if($sesion == 1){
 	$usuario = mysqli_fetch_row($respuesta);
 
 	$tipoUsuario = $usuario[1];
+	$idUsuario = $usuario[0];
 	switch($tipoUsuario){
 		case 0://Index de cliente
 			$nombre = $usuario[4];
@@ -115,6 +116,7 @@ if($sesion == 1){
 						</div>
 					  <form id="formRealizarEnvio" autocomplete="off">
                             <!--Fila 1-->
+							<input id="idUsuario" name="idUsuario" type="number" value='<?php echo $idUsuario?>' hidden></input>
 						  <div class="row">
 								<div class="col s12 m6">
 									<h6><i class="fas fa-map"></i> Datos de origen *</h6>
