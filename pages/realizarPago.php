@@ -160,7 +160,7 @@ if($sesion == 1){
                                 </div>
                                 <div class="input-field col s12 m6">
                                     <label for="codigoCard">Código de seguridad</label>
-                                    <input type="text" id="codigoCard" name="codigoCard" class="nameDestinoC" data-validetta="required,number,minLength[3],maxLength[4]">
+                                    <input type="password" id="codigoCard" name="codigoCard" class="nameDestinoC" data-validetta="required,number,minLength[3],maxLength[4]">
                                 </div> 
                             </div>
                             <div class="row">
