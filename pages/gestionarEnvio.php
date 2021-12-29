@@ -12,6 +12,7 @@ if($sesion == 1){
 	$usuario = mysqli_fetch_row($respuesta);
 
 	$tipoUsuario = $usuario[1];
+	$idUsuario = $usuario[0];
 	switch($tipoUsuario){
 		case 0://Index de cliente
 			$nombre = $usuario[4];
@@ -107,66 +108,82 @@ if($sesion == 1){
 						<a href="./../index.php"><i class="fas fa-arrow-left"></i> Regresar</a>
 						<div class="row">
 							<h3>Gestión de Envios</h3>
-						</div>
+						</div>						
 						<div class="row">
+							<?php
+							// Te recomiendo utilizar esta conección, la que utilizas ya no es la recomendada. 
+							$link = new PDO('mysql:host=localhost;dbname=squid', 'root', ''); // el campo vaciío es para la password. 
+							?>
 							<div class="col s12 m12">
 								<table class="responsive-table">
 									<thead>
 										<tr>
-											<th>#</th>
 											<th>Numero de rastreo</th>
 											<th>Fecha del envío</th>
-											<th>Total</th>
+											<th>Tipo de paquete</th>
 											<th>Estatus</th>
 											<th>Acción</th>
 										</tr>
 									</thead>
 									<tbody>
+										<?php foreach ($link->query("SELECT * from envios WHERE usuarioAsociado='$idUsuario'") as $row){ // aca puedes hacer la consulta e iterarla con each. ?> 
+										<form id="formgestionarEnvio" autocomplete="off" action="consultarEnvio.php" method="post">
 										<tr>
-											<td>1</td>
-											<td>9082320026</td>
-											<td>25/11/2021</td>
-											<td>$250</td>
-											<td>En espera de recoleccion</td>
-											<td>
-												<a href="consultarEnvio.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-													<button type="button" class="btn yellow darken-2 center-align" style="width:26%;">Consultar envío</button>
-												</a>
-												<a href="modificarDatosEnvio.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-													<button type="button" class="btn yellow darken-2 center-align" style="width:25%;">Modificar datos</button>
-												</a>
-												<button type="button" class="btn yellow darken-2 center-align disabled" style="width:30%;">Realizar reclamo</button>
-												<a href="facturar.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-													<button type="button" class="btn yellow darken-2 center-align" style="width:16%;">Facturar</button>
-												</a>
-												<br>
-												<br>
-												<button type="button" class="gestionarEnvio btn yellow darken-2 center-align" style="width:30%;">Consultar Factura</button>
-											</td>
-										<tr>
-											<td>2</td>
-											<td>8374027491</td>
-											<td>17/12/2021</td>
-											<td>$100</td>
-											<td>Entregado</td>
-											<td>
-												<a href="consultarEnvio.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-													<button type="button" class="btn yellow darken-2 center-align" style="width:26%;">Consultar envío</button>
-												</a>
-												<a href="modificarDatosEnvio.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-													<button type="button" class="btn yellow darken-2 center-align" style="width:25%;">Modificar datos</button>
-												</a>
-												<a href="realizarReclamo.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-													<button type="button" class="btn yellow darken-2 center-align" style="width:30%;">Realizar reclamo</button>
-												</a>
-												<a href="facturar.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
-													<button type="button" class="btn yellow darken-2 center-align" style="width:16%;">Facturar</button>
-												</a>
-												<br>
-												<br>
-												<button type="button" class="btn yellow darken-2 center-align gestionarEnvio" style="width:30%;">Consultar Factura</button>
-											</td>
+										<td>
+											<?php echo $row['guia'] ?>
+											<input id="numRastreo" name="numRastreo" type="number" value='<?php echo $row['guia']?>' hidden></input>
+										</td>
+										<td><?php echo $row['fechaEnvio'] ?></td>
+										<td>
+											<?php 	if($row['tipoPaquete'] == 1)
+														echo "Sobre para documentos";
+													else if($row['tipoPaquete'] == 2)
+														echo "Caja pequeña";	
+													else if($row['tipoPaquete'] == 3)
+														echo "Caja mediana";
+													else if($row['tipoPaquete'] == 4)
+														echo "Caja grande";
+													else
+														echo "Error al obtener el tipo de paquete";
+											?>
+										</td>
+										<td>
+											<?php 	if($row['status'] == 0)
+														echo "En espera de pago";
+													else if($row['status'] == 1)
+														echo "Envío pendiente de recogida";	
+													else if($row['status'] == 2)
+														echo "Envío en tránsito";
+													else if($row['status'] == 3)
+														echo "Envío en reparto";
+													else if($row['status'] == 4)
+														echo "Destinatario Ausente";
+													else if($row['status'] == 5)
+														echo "En fase de devolución";
+													else
+														echo "Error al obtener el estatus";
+											?>
+										</td>
+										<td>
+											<button type="submit" class="btn yellow darken-2 center-align" style="width:20%;">Detalles</button>
+											<a href="modificarDatosEnvio.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
+												<button type="button" class="btn yellow darken-2 center-align" style="width:20%;">Modificar datos</button>
+											</a>
+											<a href="realizarReclamo.php">
+											<button type="button" class="btn yellow darken-2 center-align" style="width:30%;">Realizar reclamo</button>
+											</a>
+											<a href="facturar.php"><!--Remover etiqueta <a> y cambiar el 'type' cuando se agregue funcionalidad-->
+												<button type="button" class="btn yellow darken-2 center-align" style="width:20%;">Facturar</button>
+											</a>
+											<br>
+											<br>
+											<button type="button" class="gestionarEnvio btn yellow darken-2 center-align" style="width:20%;">Consultar Factura</button>	
+										</td>
 										</tr>
+										</form>
+										<?php
+										}
+										?>
 									</tbody>
 								</table>
 							</div>
