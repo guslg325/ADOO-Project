@@ -132,11 +132,11 @@ if($sesion == 1){
                                 <b>Estatus:</b>  <?php 	if($row['status'] == 0)
 														echo "En espera de pago";
 													else if($row['status'] == 1)
-														echo "Envío pendiente de recogida";	
+														echo "Envío esperando recolección";	
 													else if($row['status'] == 2)
 														echo "Envío en tránsito";
 													else if($row['status'] == 3)
-														echo "Envío en reparto";
+														echo "Entregado";
 													else if($row['status'] == 4)
 														echo "Destinatario Ausente";
 													else if($row['status'] == 5)
