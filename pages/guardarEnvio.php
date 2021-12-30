@@ -1,5 +1,5 @@
 <?php
-
+session_start(); // Inicio de la sesión
 $respAX = array();
 //Create an instance; passing `true` enables exceptions
 $conec = mysqli_connect("localhost","root","","squid");//("localhost","USUARIO","CONTRASENA","AQUI ES EL NOMBRE DE LA BASE")
@@ -62,6 +62,10 @@ if($datosOrigen=='2' && $datosDestino=='2'){
 $query2 = mysqli_query($conec, "SELECT * FROM envios WHERE usuarioAsociado = $idUsuario AND status = 0");
 $respuesta = mysqli_fetch_row($query2);
 $guia = $respuesta[17];
+$_SESSION["correo"]=$correoO;
+$_SESSION["guia2"]=$guia;
+
+
 
 $respAX["codigo"]="1";
 $respAX["msj"]="Envío validado con éxito.";
