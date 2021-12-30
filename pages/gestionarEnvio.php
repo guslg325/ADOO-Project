@@ -151,18 +151,18 @@ if($sesion == 1){
 											<?php 	if($row['status'] == 0)
 														echo "En espera de pago";
 													else if($row['status'] == 1)
-														echo "Envío pendiente de recogida";	
+														echo "Envío esperando recolección";	
 													else if($row['status'] == 2)
 														echo "Envío en tránsito";
 													else if($row['status'] == 3)
-														echo "Envío en reparto";
+														echo "Entregado";
 													else if($row['status'] == 4)
 														echo "Destinatario Ausente";
 													else if($row['status'] == 5)
 														echo "En fase de devolución";
 													else
 														echo "Error al obtener el estatus";
-											?>
+												?>
 										</td>
 										<td>
 											<button type="submit" class="btn yellow darken-2 center-align" style="width:20%;">Detalles</button>
@@ -177,7 +177,7 @@ if($sesion == 1){
 											</a>
 											<br>
 											<br>
-											<button type="button" class="gestionarEnvio btn yellow darken-2 center-align" style="width:20%;">Consultar Factura</button>	
+											<button type="button" class="gestionarEnvio btn yellow darken-2 center-align" style="width:35%;">Consultar Factura</button>	
 										</td>
 										</tr>
 										</form>
