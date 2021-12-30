@@ -4,7 +4,7 @@ $sesion = isset($_SESSION["login"]);
 
 $conec = mysqli_connect("localhost","root","","squid");
 mysqli_set_charset($conec,"utf8");
-
+$guia=$_POST["guia"];
 if($sesion == 1){
 	$correo = $_SESSION["login"];
 	$query = "SELECT * FROM cliente WHERE correo_cliente = '$correo'";
@@ -98,63 +98,179 @@ if($sesion == 1){
         <div class="container">
             <div class="card">
                 <div class="card-content">
-                    <a href="rastrear.php"><i class="fas fa-arrow-left"></i> Regresar</a>
-                    <center><h3><i class="fas fa-shipping-fast"></i> Resultados del Rastreo</h3></center>
-                    <div class="row">
+				<div class="card-content">
+                        <a href="gestionarEnvio.php"><i class="fas fa-arrow-left"></i> Regresar</a>
+                        <?php
+						// Te recomiendo utilizar esta conección, la que utilizas ya no es la recomendada. 
+						$link = new PDO('mysql:host=localhost;dbname=squid', 'root', ''); // el campo vaciío es para la password. 
+                        foreach ($link->query("SELECT * from envios WHERE guia='$guia'") as $row)
+						?>
+                        <div class="row">
+						<center><h3><i class="fas fa-shipping-fast"></i> Resultados del Rastreo</h3></center>
+                        </div>
+                        <div class="row">
+                            <h5> <b>Numero de rastreo:</b>  <?php echo $row['guia'] ?></h5>
+                            <h5> <b>Fecha de envío:</b>  <?php echo $row['fechaEnvio'] ?></h5>
+                            <h5>
+                                <b>Tipo de paquete:</b>  <?php 	if($row['tipoPaquete'] == 1)
+														echo "Sobre para documentos";
+													else if($row['tipoPaquete'] == 2)
+														echo "Caja pequeña";	
+													else if($row['tipoPaquete'] == 3)
+														echo "Caja mediana";
+													else if($row['tipoPaquete'] == 4)
+														echo "Caja grande";
+													else
+														echo "Error al obtener el tipo de paquete";
+											?>
+                            </h5>
+                            <h5>
+                                <b>Estatus:</b>  <?php 	if($row['status'] == 0)
+														echo "En espera de pago";
+													else if($row['status'] == 1)
+														echo "Envío esperando recolección";	
+													else if($row['status'] == 2)
+														echo "Envío en tránsito";
+													else if($row['status'] == 3)
+														echo "Entregado";
+													else if($row['status'] == 4)
+														echo "Destinatario Ausente";
+													else if($row['status'] == 5)
+														echo "En fase de devolución";
+													else
+														echo "Error al obtener el estatus";
+											?>
+                            </h5>           
+                        </div>
+						
+						<div class="row">
                         <div class="col s12 m12">
-                            <h5>Numero de rastreo: ---</h5>
+                            <h5>Estatus del envío.</h5>
                         </div> 
-                        <div class="col s12 m12">
-                            <h5>Fecha de envio: ##/##/####</h5>
-                        </div> 
-                        <div class="col s12 m12">
-                            <h5>Origen: ---</h5>
-                        </div> 
-                        <div class="col s12 m12">
-                            <h5>Destino: ---</h5>
-                        </div> 
-						<div class="col s12 m12">
-                            <h5>Fecha aproximada de llegada: ##/##/####</h5>
-                        </div> 
-						<div class="col s12 m12">
-                            <h5>Estatus:</h5>
+                        <div class="row" align="center">
+							<?php 	if($row['status'] == 0)
+										echo "<center><img src="."../img/status1.png"." width="."1000"." height="."210"."></center>";
+									else if($row['status'] == 1)
+									echo "<center><img src="."../img/status2.png"." width="."1000"." height="."210"."></center>";
+									else if($row['status'] == 2)
+									echo "<center><img src="."../img/status3.png"." width="."1000"." height="."210"."></center>";
+									else if($row['status'] == 3)
+									echo "<center><img src="."../img/status4.png"." width="."1000"." height="."210"."></center>";
+									else if($row['status'] == 4)
+									echo "<center><img src="."../img/status3.png"." width="."1000"." height="."210"."></center>";
+									else if($row['status'] == 5)
+									echo "<center><img src="."../img/status3.png"." width="."1000"." height="."210"."></center>";
+									else
+									echo "<center><img src="."../img/status1.png"." width="."1000"." height="."210"."></center>";
+							?>
                         </div> 
                     </div>
-
-                    <div class="row">
-                        <div class="col s12 m12">
-                            <h5>Historial de movimientos</h5>
-                        </div> 
-                        <div class="col s12 m12">
+                        <div class="row">
+                            <h5>Datos del remitente</h5>
+                        </div>
+                        <div class="row">
                             <table class="responsive-table">
                                 <thead>
                                     <tr>
-                                        <th># de movimiento</th>
-                                        <th>Estatus del movimiento</th>
-                                        <th>Ubicación</th>
-                                        <th>Fecha</th>
-                                        <th>Hora</th>
+                                        <th>Nombre</th>
+                                        <th>Calle</th>
+                                        <th>Municipio</th>
+                                        <th>Estado</th>
+                                        <th>CP</th>
+                                        <th>Correo</th>
+                                        <th>Telefono</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-
-                                    <tr>
-                                        <td>2</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
+                                    <?php foreach ($link->query("SELECT * from envios WHERE guia='$guia'") as $row){ // aca puedes hacer la consulta e iterarla con each. ?> 
+										<tr>
+                                            <td><?php echo $row['nombreO'] ?></td>
+                                            <td><?php echo $row['calleO'] ?></td>
+                                            <td><?php echo $row['municipioO'] ?></td>
+                                            <td><?php echo $row['estadoO'] ?></td>
+                                            <td><?php echo $row['cpO'] ?></td>
+                                            <td><?php echo $row['correoO'] ?></td>
+                                            <td><?php echo $row['telefonoO'] ?></td>
+										</tr>
+										<?php
+										}
+										?>
                                 </tbody>
                             </table>
-                        </div> 
+                        </div>
+                        <div class="row">
+                            <h5>Datos del destinatario</h5>
+                        </div>
+                        <div class="row">
+                            <table class="responsive-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Calle</th>
+                                        <th>Municipio</th>
+                                        <th>Estado</th>
+                                        <th>CP</th>
+                                        <th>Correo</th>
+                                        <th>Telefono</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($link->query("SELECT * from envios WHERE guia='$guia'") as $row){ // aca puedes hacer la consulta e iterarla con each. ?> 
+										<tr>
+                                            <td><?php echo $row['nombreD'] ?></td>
+                                            <td><?php echo $row['calleD'] ?></td>
+                                            <td><?php echo $row['municipioD'] ?></td>
+                                            <td><?php echo $row['estadoD'] ?></td>
+                                            <td><?php echo $row['cpD'] ?></td>
+                                            <td><?php echo $row['correoD'] ?></td>
+                                            <td><?php echo $row['telefonoD'] ?></td>
+										</tr>
+										<?php
+										}
+										?>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <h5>Datos del centro de envio</h5>
+                        </div>
+                        <div class="row">
+                            <table class="responsive-table">
+                                <thead>
+                                    <tr>
+                                        <th>Centro de origen</th>
+                                        <th>Centro de destino</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($link->query("SELECT * from envios WHERE guia='$guia'") as $row){
+                                        $idCentroO = $row['centroO'];
+                                        $idCentroD = $row['centroD'];
+                                        ?> 
+										<tr>
+                                            <td>
+                                                <?php 
+                                                    $link2 = new PDO('mysql:host=localhost;dbname=squid', 'root', ''); // el campo vaciío es para la password. 
+                                                    foreach ($link2->query("SELECT * from centros WHERE id='$idCentroO'") as $row2)
+                                                    echo $row2['calle']."&nbsp&nbsp&nbspCP. ".$row2['CP']
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <?php 
+                                                    $link2 = new PDO('mysql:host=localhost;dbname=squid', 'root', ''); // el campo vaciío es para la password. 
+                                                    foreach ($link2->query("SELECT * from centros WHERE id='$idCentroD'") as $row2)
+                                                    echo $row2['calle']."&nbsp&nbsp&nbspCP. ".$row2['CP']
+                                                ?>
+                                            </td>
+										</tr>
+										<?php
+										}
+										?>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </div>
