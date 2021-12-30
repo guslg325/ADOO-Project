@@ -105,7 +105,7 @@ if($sesion == 1){
 						<div class="row">
 							<center><h3><i class="fas fa-box"></i> INGRESA TU NÚMERO DE RASTREO</h3></center>
 						</div>
-						<form id="formRastrear" autocomplete="off">
+						<form id="formRastrear" autocomplete="off" method="post" action="resultadoRastreo.php">
 							<div class="row">
 								<div class="col s12">
 									<div class="col s12 input-field">
@@ -118,9 +118,9 @@ if($sesion == 1){
 							<div class="row">
 								<div class="col s12 l3"></div>
 								<div class="col s12 l3 input-field">
-									<a href="resultadoRastreo.php">
-										<button type="button" class="btn green darken-2 center-align" style="width:100%;">Rastrear</button>
-									</a>
+									
+										<button type="sumbit" class="btn green darken-2 center-align" style="width:100%;">Rastrear</button>
+									
 								</div>
 								<div class="col s12 l3 input-field">
 									<a href="./../index.php">
