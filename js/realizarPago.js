@@ -22,7 +22,7 @@ $(document).ready(function(){
 							boxWidth: "50%",
 							useBootstrap: false,
                                                         onDestroy: function(){
-                                                                window.location.href = "./gestionarEnvio.php";
+                                                                window.location.href = "./mandarCorreo.php";
                                                         }
 						});
                                         }else{
