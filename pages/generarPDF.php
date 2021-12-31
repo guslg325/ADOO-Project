@@ -183,26 +183,38 @@ class PDF extends FPDF
                 $estadoOrigen = $res['estadoO'];
                 $cpOrigen = $res['cpO'];
             
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Calle: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $calleOrigen, 0, 1);
+                if($estadoOrigen=='1'){
+                    $estadoOrigen="Aguascalientes";                    
+                }
+                if($estadoOrigen=='2'){
+                    $estadoOrigen="Baja California";                    
+                }
+                if($estadoOrigen=='3'){
+                    $estadoOrigen="Baja California Sur";                    
+                }
+                if($estadoOrigen=='4'){
+                    $estadoOrigen="Campeche";                    
+                }
+                if($estadoOrigen=='5'){
+                    $estadoOrigen="Chiapas";                    
+                }
+                if($estadoOrigen=='6'){
+                    $estadoOrigen="Chihuahua";                    
+                }
+                if($estadoOrigen=='7'){
+                    $estadoOrigen="Ciudad de México";                    
+                }
                 
                 $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Municipio: ');
+                $pdf->Write(10, '    Dirección: ');
                 $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $municipioOrigen, 0, 1);
-
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Estado: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $estadoOrigen, 0, 1);
-
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    CP: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
+                $pdf->Write(10, $calleOrigen);
+                $pdf->Write(10, ' ');
+                $pdf->Write(10, $municipioOrigen);
+                $pdf->Write(10, ' ');
+                $pdf->Write(10, $estadoOrigen);
+                $pdf->Write(10, ' ');
                 $pdf->Cell(0, 10, $cpOrigen, 0, 1);
-                        
             }
             if($res['calleO']!=' ' && $res['calleD']!=' '){
 				$calleOrigen = $res['calleO'];
@@ -210,24 +222,37 @@ class PDF extends FPDF
                 $estadoOrigen = $res['estadoO'];
                 $cpOrigen = $res['cpO'];
 
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Calle: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $calleOrigen, 0, 1);
-                
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Municipio: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $municipioOrigen, 0, 1);
+                if($estadoOrigen=='1'){
+                    $estadoOrigen="Aguascalientes";                    
+                }
+                if($estadoOrigen=='2'){
+                    $estadoOrigen="Baja California";                    
+                }
+                if($estadoOrigen=='3'){
+                    $estadoOrigen="Baja California Sur";                    
+                }
+                if($estadoOrigen=='4'){
+                    $estadoOrigen="Campeche";                    
+                }
+                if($estadoOrigen=='5'){
+                    $estadoOrigen="Chiapas";                    
+                }
+                if($estadoOrigen=='6'){
+                    $estadoOrigen="Chihuahua";                    
+                }
+                if($estadoOrigen=='7'){
+                    $estadoOrigen="Ciudad de México";                    
+                }
 
                 $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Estado: ');
+                $pdf->Write(10, '    Dirección: ');
                 $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $estadoOrigen, 0, 1);
-
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    CP: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
+                $pdf->Write(10, $calleOrigen);
+                $pdf->Write(10, ' ');
+                $pdf->Write(10, $municipioOrigen);
+                $pdf->Write(10, ' ');
+                $pdf->Write(10, $estadoOrigen);
+                $pdf->Write(10, ' ');
                 $pdf->Cell(0, 10, $cpOrigen, 0, 1);
            
 			}
@@ -280,6 +305,48 @@ class PDF extends FPDF
 
 			}
             if($res['centroO']!=' ' && $res['calleD']!=' '){
+                
+                $calleDestino = $res['calleD'];
+                $municipioDestino = $res['municipioD'];
+                $estadoDestino = $res['estadoD'];
+                $cpDestino = $res['cpD'];
+                
+                if($estadoDestino=='1'){
+                    $estadoDestino="Aguascalientes";                    
+                }
+                if($estadoDestino=='2'){
+                    $estadoDestino="Baja California";                    
+                }
+                if($estadoDestino=='3'){
+                    $estadoDestino="Baja California Sur";                    
+                }
+                if($estadoDestino=='4'){
+                    $estadoDestino="Campeche";                    
+                }
+                if($estadoDestino=='5'){
+                    $estadoDestino="Chiapas";                    
+                }
+                if($estadoDestino=='6'){
+                    $estadoDestino="Chihuahua";                    
+                }
+                if($estadoDestino=='7'){
+                    $estadoDestino="Ciudad de México";                    
+                }
+
+                $pdf->SetFont('Arial', 'B', $tamLetra);
+                $pdf->Write(10, '    Dirección: ');
+                $pdf->SetFont('Arial', '', $tamLetra);
+                $pdf->Write(10, $calleDestino);
+                $pdf->Write(10, ' ');
+                $pdf->Write(10, $municipioDestino);
+                $pdf->Write(10, ' ');
+                $pdf->Write(10, $estadoDestino);
+                $pdf->Write(10, ' ');
+                $pdf->Cell(0, 10, $cpDestino, 0, 1);
+                
+            }
+            if($res['calleO']!=' ' && $res['centroD']!=' '){
+                                
                 $centroDestino = $res['centroD'];
 
                 if($centroDestino=='1'){
@@ -301,33 +368,6 @@ class PDF extends FPDF
                 $pdf->Write(10, '    Centro de Envío: ');
                 $pdf->SetFont('Arial', '', $tamLetra);
                 $pdf->Cell(0, 10, $centroDestino, 0, 1);
-
-            }
-            if($res['calleO']!=' ' && $res['centroD']!=' '){
-                $calleDestino = $res['calleD'];
-                $municipioDestino = $res['municipioD'];
-                $estadoDestino = $res['estadoD'];
-                $cpDestino = $res['cpD'];
-            
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Calle: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $calleDestino, 0, 1);
-                
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Municipio: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $municipioDestino, 0, 1);
-
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Estado: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $estadoDestino, 0, 1);
-
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    CP: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $cpDestino, 0, 1);
                         
             }
             if($res['calleO']!=' ' && $res['calleD']!=' '){
@@ -336,24 +376,37 @@ class PDF extends FPDF
                 $estadoDestino = $res['estadoD'];
                 $cpDestino = $res['cpD'];
 
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Calle: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $calleDestino, 0, 1);
-                
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Municipio: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $municipioDestino, 0, 1);
+                if($estadoDestino=='1'){
+                    $estadoDestino="Aguascalientes";                    
+                }
+                if($estadoDestino=='2'){
+                    $estadoDestino="Baja California";                    
+                }
+                if($estadoDestino=='3'){
+                    $estadoDestino="Baja California Sur";                    
+                }
+                if($estadoDestino=='4'){
+                    $estadoDestino="Campeche";                    
+                }
+                if($estadoDestino=='5'){
+                    $estadoDestino="Chiapas";                    
+                }
+                if($estadoDestino=='6'){
+                    $estadoDestino="Chihuahua";                    
+                }
+                if($estadoDestino=='7'){
+                    $estadoDestino="Ciudad de México";                    
+                }
 
                 $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    Estado: ');
+                $pdf->Write(10, '    Dirección: ');
                 $pdf->SetFont('Arial', '', $tamLetra);
-                $pdf->Cell(0, 10, $estadoDestino, 0, 1);
-
-                $pdf->SetFont('Arial', 'B', $tamLetra);
-                $pdf->Write(10, '    CP: ');
-                $pdf->SetFont('Arial', '', $tamLetra);
+                $pdf->Write(10, $calleDestino);
+                $pdf->Write(10, ' ');
+                $pdf->Write(10, $municipioDestino);
+                $pdf->Write(10, ' ');
+                $pdf->Write(10, $estadoDestino);
+                $pdf->Write(10, ' ');
                 $pdf->Cell(0, 10, $cpDestino, 0, 1);
            
 			}
